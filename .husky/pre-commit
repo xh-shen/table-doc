@@ -1,0 +1,12 @@
+###
+ # @Author: shen
+ # @Date: 2022-12-02 09:43:35
+ # @LastEditors: shen
+ # @LastEditTime: 2022-12-02 09:43:48
+ # @Description: 
+### 
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npx lint-staged
+npx pretty-quick --staged

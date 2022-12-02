@@ -1,0 +1,26 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"outDir": "dist",
+		"sourceMap": false,
+		"target": "es2018",
+		"module": "esnext",
+		"strict": true,
+		"jsx": "preserve",
+		"allowJs": true,
+		"moduleResolution": "node",
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"forceConsistentCasingInFileNames": true,
+		"suppressImplicitAnyIndexErrors": true,
+		"useDefineForClassFields": true,
+		"noImplicitThis": false,
+		"rootDir": ".",
+		"lib": ["esnext", "dom"],
+		"types": ["node"]
+	},
+	"include": ["**/*", ".vitepress/**/*"],
+	"exclude": ["node_modules"],
+	"references": [{ "path": "./tsconfig.node.json" }]
+}
