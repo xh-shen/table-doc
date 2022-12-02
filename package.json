@@ -15,9 +15,12 @@
 		"prepare": "husky install"
 	},
 	"dependencies": {
+		"clipboard-copy": "^4.0.1",
 		"dom-align": "^1.12.3",
+		"element-plus": "^2.2.25",
 		"lodash": "4.17.15",
 		"resize-observer-polyfill": "^1.5.1",
+		"unocss": "^0.47.5",
 		"validator": "^13.7.0"
 	},
 	"devDependencies": {
