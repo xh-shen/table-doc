@@ -21,6 +21,7 @@
 		"lodash": "4.17.15",
 		"resize-observer-polyfill": "^1.5.1",
 		"unocss": "^0.47.5",
+		"@shene/table": "npm:@shene/table@latest",
 		"validator": "^13.7.0"
 	},
 	"devDependencies": {

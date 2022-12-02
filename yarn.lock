@@ -930,6 +930,16 @@
     estree-walker "^2.0.2"
     picomatch "^2.3.1"
 
+"@shene/table@npm:@shene/table@latest":
+  version "1.0.0-alpha.9"
+  resolved "https://registry.yarnpkg.com/@shene/table/-/table-1.0.0-alpha.9.tgz#2b037697663bd901050810057587b89326a9091b"
+  integrity sha512-+cGrxn17L0s/APwTE6LkBIkkLoSFElG3Bt5pJTRrRQqR9HrIC6AYQyZGei0z1MdgukmRladEjbT5JD/OnVOwgQ==
+  dependencies:
+    dom-align "^1.12.3"
+    lodash "4.17.15"
+    resize-observer-polyfill "^1.5.1"
+    validator "^13.7.0"
+
 "@tsconfig/node10@^1.0.7":
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/@tsconfig/node10/-/node10-1.0.9.tgz#df4907fc07a886922637b15e02d4cebc4c0021b2"

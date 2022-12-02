@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-12-02 10:42:47
  * @LastEditors: shen
- * @LastEditTime: 2022-12-02 14:02:28
+ * @LastEditTime: 2022-12-02 18:57:29
  * @Description:
  */
 import { defineConfig } from 'vitepress'
@@ -41,7 +41,7 @@ const buildTransformers = () => {
 
 export default defineConfig({
 	lang: 'zh-CN',
-	title: 'STable',
+	title: 'Shene Table',
 	description: 'Vue3高性能表格组件',
 	lastUpdated: true,
 	// appearance: false,

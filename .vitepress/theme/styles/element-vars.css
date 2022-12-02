@@ -1,0 +1,19 @@
+:root {
+	--el-color-primary: var(--s-color-primary);
+	--el-color-primary-light-3: var(--s-color-primary-light-3);
+	--el-color-primary-light-5: var(--s-color-primary-light-5);
+	--el-color-primary-light-7: var(--s-color-primary-light-7);
+	--el-color-primary-light-8: var(--s-color-primary-light-8);
+	--el-color-primary-light-9: var(--s-color-primary-light-9);
+	--el-color-primary-dark-2: var(--s-color-primary-dark-2);
+}
+
+html.dark {
+	--el-color-primary: var(--s-color-primary);
+	--el-color-primary-light-3: var(--s-color-primary-light-3);
+	--el-color-primary-light-5: var(--s-color-primary-light-5);
+	--el-color-primary-light-7: var(--s-color-primary-light-7);
+	--el-color-primary-light-8: var(--s-color-primary-light-8);
+	--el-color-primary-light-9: var(--s-color-primary-light-9);
+	--el-color-primary-dark-2: var(--s-color-primary-dark-2);
+}

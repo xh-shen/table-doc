@@ -18,7 +18,10 @@
 		"noImplicitThis": false,
 		"rootDir": ".",
 		"lib": ["esnext", "dom"],
-		"types": ["node"]
+		"types": ["node"],
+		"paths": {
+			"@shene/table": ["./core/src"]
+		}
 	},
 	"include": ["**/*", ".vitepress/**/*"],
 	"exclude": ["node_modules"],

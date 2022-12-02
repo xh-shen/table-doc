@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-05-09 09:00:48
  * @LastEditors: shen
- * @LastEditTime: 2022-12-02 15:44:42
+ * @LastEditTime: 2022-12-02 22:27:28
  * @Description: 
 -->
 <script setup lang="ts">
@@ -10,7 +10,7 @@ import { ref } from '@vue/runtime-core'
 import clipboardCopy from 'clipboard-copy'
 import { ElMessage } from 'element-plus'
 import { DocumentCopy, Check } from '@element-plus/icons-vue'
-// import BasicDemoVue from './basic-demo.vue'
+import BasicDemo from './demo.vue'
 const copied = ref(false)
 
 const copyContent = async (content: any) => {
@@ -41,22 +41,20 @@ const handleCopy = async () => {
 </script>
 
 <template>
-	<div class="flex lay">
-		<img src="/images/logo.png" alt="" class="logo" />
-		<div class="right">
-			<div class="tagline">
-				<span>STable</span>
+	<div class="home-page">
+		<div class="banner">
+			<div class="banner-desc">
+				<h1>Shene Table</h1>
+				<p>基于 Vue3，不依赖其他UI库的高性能表格组件</p>
 			</div>
-			<div class="sub-title">基于Vue3的高性能表格组件</div>
-			<div class="sub-title" style="color: #67c23a">流畅渲染百万级别数据,横向纵向虚拟滚动</div>
 			<div class="actions">
 				<a :href="`/guide/quickstart`">
-					<el-button type="primary" class="btn" size="large">
+					<el-button type="primary" round class="btn" size="large">
 						<span class="btn-icon"></span>
 						开始使用
 					</el-button>
 				</a>
-				<el-button class="copy" size="large" @click="handleCopy">
+				<el-button class="copy" round size="large" @click="handleCopy">
 					<span class="tag">$ &nbsp;</span>
 					<span>npm i --save @shene/table</span>
 					<el-icon class="copy-icon">
@@ -65,91 +63,78 @@ const handleCopy = async () => {
 				</el-button>
 			</div>
 		</div>
+		<div class="basic">
+			<BasicDemo />
+		</div>
 	</div>
-	<!-- <BasicDemoVue /> -->
 </template>
 
 <style scoped lang="scss">
-.logo {
-	height: 200px;
-}
-.flex {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 80px 0;
-	flex-wrap: wrap;
-	height: 2000px;
-}
-.right {
-	padding-left: 50px;
-}
-.tagline {
-	font-size: 30px;
-	padding: 0;
-	margin: 0;
-	border-bottom: 0;
-	font-weight: 400;
-	// color: rgba(0, 0, 0, 0.85);
-}
-.sub-title {
-	font-size: 20px;
-	margin: 0.8rem 0 0;
-	color: var(--vp-c-text-2);
-}
-.actions {
-	display: flex;
-	margin-top: 1.2rem;
-	.btn-icon {
-		position: relative;
-		width: 14px;
-		height: 12px;
-		margin-right: 8px;
-		&:before {
-			position: absolute;
-			content: '';
-			width: 8px;
-			height: 8px;
-			border-top: 2px solid #fff;
-			border-left: 2px solid #fff;
-			box-sizing: border-box;
-			transform: rotate(135deg);
-			left: -2px;
-			top: 50%;
-			margin-top: -4px;
-		}
-		&:after {
-			position: absolute;
-			content: '';
-			width: 6px;
-			height: 2px;
-			background-color: #fff;
-			right: 0;
-			bottom: 0;
-		}
-	}
-	.copy {
-		margin-left: 20px;
-		.tag {
-			color: #ccc;
-		}
-		&-icon {
-			margin-left: 5px;
-		}
-	}
-}
-@media only screen and (max-width: 767.99px) {
-	.right {
-		padding: 0 30px;
+.home-page {
+	.banner {
+		padding: 100px 0;
 		text-align: center;
-	}
-	.actions {
-		flex-wrap: wrap;
-		justify-content: center;
-		.copy {
-			margin-top: 20px;
-			margin-left: 0;
+		background-color: var(--vp-c-bg-soft);
+		&-desc {
+			h1 {
+				font-size: 34px;
+				line-height: 48px;
+				font-weight: 600;
+				color: var(--vp-c-text-1);
+			}
+			p {
+				margin-top: 0.5rem;
+				font-size: 18px;
+				color: var(--vp-c-text-2);
+			}
 		}
+		.actions {
+			display: flex;
+			margin-top: 2rem;
+			justify-content: center;
+			.btn-icon {
+				position: relative;
+				width: 14px;
+				height: 12px;
+				margin-right: 8px;
+				&:before {
+					position: absolute;
+					content: '';
+					width: 8px;
+					height: 8px;
+					border-top: 2px solid #fff;
+					border-left: 2px solid #fff;
+					box-sizing: border-box;
+					transform: rotate(135deg);
+					left: -2px;
+					top: 50%;
+					margin-top: -4px;
+				}
+				&:after {
+					position: absolute;
+					content: '';
+					width: 6px;
+					height: 2px;
+					background-color: #fff;
+					right: 0;
+					bottom: 0;
+				}
+			}
+			.copy {
+				margin-left: 20px;
+				.tag {
+					color: #ccc;
+				}
+				&-icon {
+					margin-left: 5px;
+				}
+			}
+		}
+	}
+	.basic {
+		padding: 100px 32px;
+		max-width: calc(var(--vp-layout-max-width) - 64px);
+		margin: 0 auto;
 	}
 }
 </style>

@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-12-02 15:46:07
  * @LastEditors: shen
- * @LastEditTime: 2022-12-02 16:46:39
+ * @LastEditTime: 2022-12-02 21:17:45
  * @Description: 
 -->
 <script setup lang="ts">
@@ -41,7 +41,6 @@ provide('close-screen', closeScreen)
 	z-index: var(--vp-z-index-nav);
 	width: 100%;
 	pointer-events: none;
-	border-bottom: 1px solid var(--vp-c-border-color);
 }
 
 @media (min-width: 960px) {

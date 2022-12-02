@@ -1,3 +1,10 @@
+<!--
+ * @Author: shen
+ * @Date: 2022-12-02 16:55:05
+ * @LastEditors: shen
+ * @LastEditTime: 2022-12-02 18:56:39
+ * @Description: 
+-->
 <script setup lang="ts">
 import { useData } from 'vitepress'
 import { useSidebar } from '../composables/sidebar.js'
@@ -9,11 +16,13 @@ const { hasSidebar } = useSidebar()
 
 <template>
 	<div class="VPNavBarTitle" :class="{ 'has-sidebar': hasSidebar }">
-		<a class="title" :href="site.base">
+		<a class="title" :href="(site as any).base">
 			<slot name="nav-bar-title-before" />
-			<VPImage class="logo" :image="theme.logo" />
-			<template v-if="theme.siteTitle">{{ theme.siteTitle }}</template>
-			<template v-else-if="theme.siteTitle === undefined">{{ site.title }}</template>
+			<VPImage class="logo" :image="(theme as any).logo" />
+			<template v-if="(theme as any).siteTitle">{{ (theme as any).siteTitle }}</template>
+			<template v-else-if="(theme as any).siteTitle === undefined"
+				><span>{{ (site as any).title }}</span></template
+			>
 			<slot name="nav-bar-title-after" />
 		</a>
 	</div>
@@ -39,14 +48,15 @@ const { hasSidebar } = useSidebar()
 	align-items: center;
 	width: 100%;
 	height: var(--vp-nav-height);
-	font-size: 16px;
+	font-size: 20px;
 	font-weight: 600;
 	color: var(--vp-c-text-1);
 	transition: opacity 0.25s;
 }
 
 .title:hover {
-	opacity: 0.6;
+	/* opacity: 0.9; */
+	color: var(--vp-c-brand);
 }
 
 @media (min-width: 960px) {
@@ -57,6 +67,6 @@ const { hasSidebar } = useSidebar()
 
 :deep(.logo) {
 	margin-right: 8px;
-	height: 24px;
+	height: 40px;
 }
 </style>

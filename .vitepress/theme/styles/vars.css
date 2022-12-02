@@ -33,8 +33,6 @@
 	--vp-c-divider-dark-1: rgba(84, 84, 84, 0.65);
 	--vp-c-divider-dark-2: rgba(84, 84, 84, 0.48);
 
-	--vp-c-border-color: #dcdfe6;
-
 	--vp-c-text-light-1: var(--vp-c-indigo);
 	--vp-c-text-light-2: rgba(60, 60, 60, 0.7);
 	--vp-c-text-light-3: rgba(60, 60, 60, 0.33);
@@ -113,11 +111,11 @@
 
 	--vp-c-text-code: var(--vp-c-indigo-soft);
 
-	--vp-c-brand: var(--vp-c-green);
-	--vp-c-brand-light: var(--vp-c-green-light);
-	--vp-c-brand-lighter: var(--vp-c-green-lighter);
-	--vp-c-brand-dark: var(--vp-c-green-dark);
-	--vp-c-brand-darker: var(--vp-c-green-darker);
+	--vp-c-brand: var(--s-color-primary);
+	--vp-c-brand-light: var(--s-color-primary-light-3);
+	--vp-c-brand-lighter: var(--s-color-primary-light-5);
+	--vp-c-brand-dark: var(--s-color-primary-dark-2);
+	--vp-c-brand-darker: var(--s-color-primary-dark-2);
 
 	--vp-c-sponsor: #fd1d7c;
 }
@@ -136,8 +134,6 @@
 
 	--vp-c-divider-inverse: var(--vp-c-divider-light-1);
 	--vp-c-divider-inverse-light: var(--vp-c-divider-light-2);
-
-	--vp-c-border-color: #4c4d4f;
 
 	--vp-c-text-1: var(--vp-c-text-dark-1);
 	--vp-c-text-2: var(--vp-c-text-dark-2);

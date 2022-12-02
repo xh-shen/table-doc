@@ -60,7 +60,7 @@ const { hasSidebar } = useSidebar()
 @media (min-width: 960px) {
 	.VPNavBar {
 		height: var(--vp-nav-height-desktop);
-		border-bottom: 0;
+		/* border-bottom: 0; */
 	}
 
 	.VPNavBar.has-sidebar .content {
@@ -82,7 +82,7 @@ const { hasSidebar } = useSidebar()
 	display: flex;
 	justify-content: space-between;
 	margin: 0 auto;
-	max-width: calc(var(--vp-layout-max-width) - 64px);
+	/* max-width: calc(var(--vp-layout-max-width) - 64px); */
 	pointer-events: none;
 }
 

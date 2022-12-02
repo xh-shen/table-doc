@@ -7,10 +7,10 @@ const { hasSidebar } = useSidebar()
 </script>
 
 <template>
-	<footer v-if="theme.footer" class="VPFooter" :class="{ 'has-sidebar': hasSidebar }">
+	<footer v-if="(theme as any).footer" class="VPFooter" :class="{ 'has-sidebar': hasSidebar }">
 		<div class="container">
-			<p v-if="theme.footer.message" class="message" v-html="theme.footer.message"></p>
-			<p v-if="theme.footer.copyright" class="copyright" v-html="theme.footer.copyright"></p>
+			<p v-if="(theme as any).footer.message" class="message" v-html="(theme as any).footer.message"></p>
+			<p v-if="(theme as any).footer.copyright" class="copyright" v-html="(theme as any).footer.copyright"></p>
 		</div>
 	</footer>
 </template>
@@ -36,7 +36,7 @@ const { hasSidebar } = useSidebar()
 
 .container {
 	margin: 0 auto;
-	max-width: var(--vp-layout-max-width);
+	/* max-width: var(--vp-layout-max-width); */
 	text-align: center;
 }
 

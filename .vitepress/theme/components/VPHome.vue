@@ -1,3 +1,10 @@
+<!--
+ * @Author: shen
+ * @Date: 2022-12-02 16:55:05
+ * @LastEditors: shen
+ * @LastEditTime: 2022-12-02 22:30:29
+ * @Description: 
+-->
 <script setup lang="ts">
 import VPHomeHero from './VPHomeHero.vue'
 import VPHomeFeatures from './VPHomeFeatures.vue'
@@ -19,7 +26,7 @@ import VPHomeFeatures from './VPHomeFeatures.vue'
 
 <style scoped>
 .VPHome {
-	padding-bottom: 96px;
+	/* padding-bottom: 96px; */
 }
 
 .VPHome :deep(.VPHomeSponsors) {
@@ -29,7 +36,7 @@ import VPHomeFeatures from './VPHomeFeatures.vue'
 
 @media (min-width: 768px) {
 	.VPHome {
-		padding-bottom: 128px;
+		/* padding-bottom: 128px; */
 	}
 }
 </style>
