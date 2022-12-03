@@ -44,7 +44,8 @@ const { hasSidebar } = useSidebar()
 <style scoped>
 .VPNavBar {
 	position: relative;
-	border-bottom: 1px solid var(--vp-c-divider-light);
+	/* border-bottom: 1px solid var(--vp-c-divider-light); */
+	box-shadow: 0 8px 24px -2px rgb(0 0 0 / 5%);
 	padding: 0 8px 0 24px;
 	height: var(--vp-nav-height-mobile);
 	transition: border-color 0.5s, background-color 0.5s;

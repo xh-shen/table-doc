@@ -2,11 +2,10 @@
  * @Author: shen
  * @Date: 2022-06-20 08:57:01
  * @LastEditors: shen
- * @LastEditTime: 2022-12-02 22:45:24
+ * @LastEditTime: 2022-12-03 12:05:38
  * @Description:
  */
 import { resolve } from 'path'
-import UnoCSS from 'unocss/vite'
 // import Inspect from 'vite-plugin-inspect'
 // import mkcert from 'vite-plugin-mkcert'
 import vueJsx from '@vitejs/plugin-vue-jsx'
@@ -16,18 +15,18 @@ import type { Alias } from 'vite'
 const projRoot = resolve(__dirname, '../../')
 
 const alias: Alias[] = []
-// if (process.env.DOC_ENV !== 'production') {
-// 	alias.push(
-// 		{
-// 			find: /^@shene\/table$/,
-// 			replacement: resolve(projRoot, './core/src')
-// 		},
-// 		{
-// 			find: /^@shene\/table\/dist\/index.css$/,
-// 			replacement: resolve(projRoot, './core/src/style/index.scss')
-// 		}
-// 	)
-// }
+if (process.env.DOC_ENV !== 'production') {
+	alias.push(
+		{
+			find: /^@shene\/table$/,
+			replacement: resolve(projRoot, './core/src')
+		},
+		{
+			find: /^@shene\/table\/dist\/index.css$/,
+			replacement: resolve(projRoot, './core/src/style/index.scss')
+		}
+	)
+}
 
 export const vite = {
 	server: {
@@ -40,9 +39,8 @@ export const vite = {
 	resolve: {
 		alias
 	},
-	plugin: [
-		vueJsx(),
-		UnoCSS()
+	plugins: [
+		vueJsx()
 		// MarkdownTransform(),
 		// Inspect(),
 		// mkcert(),

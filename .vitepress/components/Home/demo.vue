@@ -2,72 +2,94 @@
  * @Author: shen
  * @Date: 2022-12-02 21:24:41
  * @LastEditors: shen
- * @LastEditTime: 2022-12-02 22:44:25
+ * @LastEditTime: 2022-12-03 16:22:34
  * @Description: 
 -->
 <script lang="tsx">
 import { ref } from 'vue'
 
-interface DataItem {
-	key: number
-	name: string
-	age: number
-	address: string
-}
-
 export default {
 	setup() {
 		const loading = ref(false)
+		const showHeader = ref(true)
 		const bordered = ref(false)
 		const stripe = ref(false)
 		const pagination = ref(false)
+		const size = ref('default')
 
-		const columns = [
+		const cols = [
 			{
-				title: 'Full Name',
-				dataIndex: 'name'
+				dataIndex: 'index',
+				key: 'index',
+				title: '序号',
+				width: 80,
+				fixed: 'left',
+				resizable: true,
+				customRender: (record: any) => record.index + 1
 			},
 			{
-				title: 'Age',
-				dataIndex: 'age'
+				dataIndex: 'platform',
+				key: 'platform',
+				title: '平台',
+				width: 80,
+				fixed: 'left',
+				resizable: true
 			},
 			{
-				title: 'Column 1',
-				dataIndex: 'address'
+				dataIndex: 'type',
+				key: 'type',
+				title: '类型'
 			},
 			{
-				title: 'Column 2',
-				dataIndex: 'address'
+				dataIndex: 'default',
+				key: 'default',
+				title: '默认值'
 			},
 			{
-				title: 'Column 3',
-				dataIndex: 'address'
+				dataIndex: 'description',
+				key: 'description',
+				title: '说明'
 			},
 			{
-				title: 'Column 4',
-				dataIndex: 'address'
+				dataIndex: 'needed',
+				key: 'needed',
+				title: '是否必传'
 			},
-			{ title: 'Column 5', dataIndex: 'address' }
+			{
+				dataIndex: 'detail.position',
+				key: 'detail.position',
+				title: '详情信息',
+				width: 120,
+				fixed: 'right',
+				ellipsis: { showTitle: false },
+				tooltip: { title: ({ value }: any) => value }
+			}
 		]
-		const data: DataItem[] = []
+
+		const data = []
 		for (let i = 0; i < 1000; i++) {
 			data.push({
-				key: i,
-				name: `Edrward ${i}`,
-				age: i + 1,
-				address: `London Park no. ${i}`
+				index: i,
+				platform: i % 2 === 0 ? '共有' : '私有',
+				type: ['String', 'Number', 'Array', 'Object'][i % 4],
+				default: ['-', '0', '[]', '{}'][i % 4],
+				detail: {
+					position: `读取 ${i} 个数据的嵌套信息值`
+				},
+				needed: i % 4 === 0 ? '是' : '否',
+				description: '数据源'
 			})
 		}
 
-		const dataSource = ref(data)
-
 		return {
+			showHeader,
 			stripe,
 			bordered,
 			loading,
 			pagination,
-			columns,
-			dataSource
+			size,
+			dataSource: ref(data),
+			columns: ref(cols)
 		}
 	}
 }
@@ -79,9 +101,12 @@ export default {
 			<div class="demo-title">示例</div>
 			<div class="demo-content">
 				<s-table
+					rowKey="index"
+					:show-header="showHeader"
 					:loading="loading"
 					:bordered="bordered"
 					:stripe="stripe"
+					:size="size"
 					:pagination="pagination"
 					:columns="columns"
 					:scroll="{ y: 400 }"
@@ -92,6 +117,10 @@ export default {
 		<div class="demo-config">
 			<div class="demo-title">配置</div>
 			<div class="demo-content">
+				<div class="demo-config-item">
+					<span>showHeader</span>
+					<el-switch size="small" v-model="showHeader" />
+				</div>
 				<div class="demo-config-item">
 					<span>bordered</span>
 					<el-switch size="small" v-model="bordered" />
@@ -107,6 +136,14 @@ export default {
 				<div class="demo-config-item">
 					<span>pagination</span>
 					<el-switch size="small" v-model="pagination" />
+				</div>
+				<div class="demo-config-item">
+					<span>size</span>
+					<el-select size="small" v-model="size" style="width: 80px">
+						<el-option value="small" label="small" />
+						<el-option value="default" label="default" />
+						<el-option value="large" label="large" />
+					</el-select>
 				</div>
 			</div>
 		</div>

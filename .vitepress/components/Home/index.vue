@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-05-09 09:00:48
  * @LastEditors: shen
- * @LastEditTime: 2022-12-02 22:27:28
+ * @LastEditTime: 2022-12-03 16:25:29
  * @Description: 
 -->
 <script setup lang="ts">
@@ -45,7 +45,7 @@ const handleCopy = async () => {
 		<div class="banner">
 			<div class="banner-desc">
 				<h1>Shene Table</h1>
-				<p>基于 Vue3，不依赖其他UI库的高性能表格组件</p>
+				<p>基于 Vue3 的高性能表格组件</p>
 			</div>
 			<div class="actions">
 				<a :href="`/guide/quickstart`">
@@ -63,8 +63,22 @@ const handleCopy = async () => {
 				</el-button>
 			</div>
 		</div>
-		<div class="basic">
-			<BasicDemo />
+		<div class="section">
+			<div class="section-title">流畅渲染，超高性能</div>
+			<div class="section-body">
+				<iframe
+					class="codesandbox"
+					src="https://codesandbox.io/embed/shene-table-b7lf1r?fontsize=12&module=%2Fsrc%2FApp.vue&theme=dark"
+					allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+					sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+				></iframe>
+			</div>
+		</div>
+		<div class="section">
+			<div class="section-title">简单易用，示例丰富</div>
+			<div class="section-body">
+				<BasicDemo />
+			</div>
 		</div>
 	</div>
 </template>
@@ -77,13 +91,15 @@ const handleCopy = async () => {
 		background-color: var(--vp-c-bg-soft);
 		&-desc {
 			h1 {
-				font-size: 34px;
-				line-height: 48px;
+				line-height: 56px;
 				font-weight: 600;
+				color: #45124e;
+				font-size: 80px !important;
+				padding-bottom: 30px;
 				color: var(--vp-c-text-1);
 			}
 			p {
-				margin-top: 0.5rem;
+				margin: 16px 0;
 				font-size: 18px;
 				color: var(--vp-c-text-2);
 			}
@@ -131,10 +147,26 @@ const handleCopy = async () => {
 			}
 		}
 	}
-	.basic {
+
+	.codesandbox {
+		width: 100%;
+		height: 500px;
+		border: 0;
+		border-radius: 4px;
+		overflow: hidden;
+		box-shadow: 0 10px 30px var(--vp-c-divider-light-1);
+	}
+	.section {
 		padding: 100px 32px;
 		max-width: calc(var(--vp-layout-max-width) - 64px);
 		margin: 0 auto;
+		&-title {
+			font-size: 50px;
+			text-align: center;
+			padding-bottom: 100px;
+			position: relative;
+			color: var(--vp-c-brand-darker);
+		}
 	}
 }
 </style>
