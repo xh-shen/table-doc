@@ -109,7 +109,7 @@ provide('onContentUpdated', onContentUpdated)
 	flex-grow: 1;
 	padding-left: 32px;
 	width: 100%;
-	max-width: 256px;
+	max-width: 150px;
 }
 
 .aside-container {
@@ -165,9 +165,5 @@ provide('onContentUpdated', onContentUpdated)
 
 .content-container {
 	margin: 0 auto;
-}
-
-.VPDoc.has-aside .content-container {
-	max-width: 688px;
 }
 </style>

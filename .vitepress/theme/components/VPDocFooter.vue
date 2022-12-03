@@ -42,13 +42,13 @@ const showFooter = computed(() => {
 		<div v-if="control.prev || control.next" class="prev-next">
 			<div class="pager">
 				<a v-if="control.prev" class="pager-link prev" :href="normalizeLink(control.prev.link)">
-					<span class="desc" v-html="theme.docFooter?.prev ?? 'Previous page'"></span>
+					<span class="desc" v-html="(theme as any).docFooter?.prev ?? '前一页'"></span>
 					<span class="title" v-html="control.prev.text"></span>
 				</a>
 			</div>
 			<div class="pager" :class="{ 'has-prev': control.prev }">
 				<a v-if="control.next" class="pager-link next" :href="normalizeLink(control.next.link)">
-					<span class="desc" v-html="theme.docFooter?.next ?? 'Next page'"></span>
+					<span class="desc" v-html="(theme as any).docFooter?.next ?? '后一页'"></span>
 					<span class="title" v-html="control.next.text"></span>
 				</a>
 			</div>

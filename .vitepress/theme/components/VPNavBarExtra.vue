@@ -1,3 +1,10 @@
+<!--
+ * @Author: shen
+ * @Date: 2022-12-02 16:55:05
+ * @LastEditors: shen
+ * @LastEditTime: 2022-12-03 19:19:07
+ * @Description: 
+-->
 <script lang="ts" setup>
 import { useData } from 'vitepress'
 import VPFlyout from './VPFlyout.vue'
@@ -8,31 +15,33 @@ import { computed } from 'vue'
 
 const { site, theme } = useData()
 
-const hasExtraContent = computed(() => theme.value.localeLinks || site.value.appearance || theme.value.socialLinks)
+const hasExtraContent = computed(
+	() => (theme as any).value.localeLinks || site.value.appearance || (theme as any).value.socialLinks
+)
 </script>
 
 <template>
 	<VPFlyout v-if="hasExtraContent" class="VPNavBarExtra" label="extra navigation">
-		<div v-if="theme.localeLinks" class="group">
-			<p class="trans-title">{{ theme.localeLinks.text }}</p>
+		<div v-if="(theme as any).localeLinks" class="group">
+			<p class="trans-title">{{ (theme as any).localeLinks.text }}</p>
 
-			<template v-for="locale in theme.localeLinks.items" :key="locale.link">
+			<template v-for="locale in (theme as any).localeLinks.items" :key="locale.link">
 				<VPMenuLink :item="locale" />
 			</template>
 		</div>
 
-		<div v-if="site.appearance" class="group">
+		<div v-if="(site as any).appearance" class="group">
 			<div class="item appearance">
-				<p class="label">Appearance</p>
+				<p class="label">主题</p>
 				<div class="appearance-action">
 					<VPSwitchAppearance />
 				</div>
 			</div>
 		</div>
 
-		<div v-if="theme.socialLinks" class="group">
+		<div v-if="(theme as any).socialLinks" class="group">
 			<div class="item social-links">
-				<VPSocialLinks class="social-links-list" :links="theme.socialLinks" />
+				<VPSocialLinks class="social-links-list" :links="(theme as any).socialLinks" />
 			</div>
 		</div>
 	</VPFlyout>

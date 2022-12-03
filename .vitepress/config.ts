@@ -2,12 +2,13 @@
  * @Author: shen
  * @Date: 2022-12-02 10:42:47
  * @LastEditors: shen
- * @LastEditTime: 2022-12-03 17:01:27
+ * @LastEditTime: 2022-12-03 22:44:58
  * @Description:
  */
 import { defineConfig } from 'vitepress'
-// import { nav } from './config/nav'
-// import { sidebar } from './config/sidebar'
+import { nav } from './config/nav'
+import { sidebar } from './config/sidebar'
+import { theme } from './config/theme'
 import { vite } from './config/vite'
 // import { mdPlugin } from './config/plugins'
 
@@ -44,12 +45,11 @@ export default defineConfig({
 	title: 'Shene Table',
 	description: 'Vue3高性能表格组件',
 	lastUpdated: true,
-	// appearance: false,
 	base: BASE_URL,
 	themeConfig: {
 		logo: BASE_URL + '/images/logo.png',
-		// nav,
-		// sidebar,
+		nav,
+		sidebar,
 		algolia: {
 			appId: 'YSCZ4HY6BZ',
 			apiKey: 'afaa8e2b4006fa52eca0cc676ce76848',
@@ -67,6 +67,7 @@ export default defineConfig({
 	},
 	markdown: {
 		// config: md => mdPlugin(md)
+		theme: theme as any
 	},
 	vue: {
 		template: {

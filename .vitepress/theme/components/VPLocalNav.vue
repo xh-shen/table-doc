@@ -21,10 +21,10 @@ function scrollToTop() {
 	<div v-if="hasSidebar" class="VPLocalNav">
 		<button class="menu" :aria-expanded="open" aria-controls="VPSidebarNav" @click="$emit('open-menu')">
 			<VPIconAlignLeft class="menu-icon" />
-			<span class="menu-text">Menu</span>
+			<span class="menu-text">菜单</span>
 		</button>
 
-		<a class="top-link" href="#" @click="scrollToTop"> Return to top </a>
+		<a class="top-link" href="#" @click="scrollToTop"> 返回顶部 </a>
 	</div>
 </template>
 

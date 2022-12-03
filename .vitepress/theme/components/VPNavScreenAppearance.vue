@@ -1,3 +1,10 @@
+<!--
+ * @Author: shen
+ * @Date: 2022-12-02 16:55:05
+ * @LastEditors: shen
+ * @LastEditTime: 2022-12-03 19:19:53
+ * @Description: 
+-->
 <script lang="ts" setup>
 import { useData } from 'vitepress'
 import VPSwitchAppearance from './VPSwitchAppearance.vue'
@@ -6,8 +13,8 @@ const { site } = useData()
 </script>
 
 <template>
-	<div v-if="site.appearance" class="VPNavScreenAppearance">
-		<p class="text">Appearance</p>
+	<div v-if="(site as any).appearance" class="VPNavScreenAppearance">
+		<p class="text">主题</p>
 		<VPSwitchAppearance />
 	</div>
 </template>

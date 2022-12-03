@@ -1,3 +1,10 @@
+<!--
+ * @Author: shen
+ * @Date: 2022-12-02 16:55:05
+ * @LastEditors: shen
+ * @LastEditTime: 2022-12-03 19:20:52
+ * @Description: 
+-->
 <script setup lang="ts">
 import { useData } from 'vitepress'
 import type { DefaultTheme } from 'vitepress/theme'
@@ -35,7 +42,7 @@ function handleClick({ target: el }: Event) {
 			<div class="outline-marker" ref="marker" />
 
 			<div class="outline-title">
-				{{ theme.outlineTitle || 'On this page' }}
+				{{ (theme as any).outlineTitle || 'On this page' }}
 			</div>
 
 			<nav aria-labelledby="doc-outline-aria-label">

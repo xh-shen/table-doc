@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-12-02 16:55:05
  * @LastEditors: shen
- * @LastEditTime: 2022-12-02 16:58:33
+ * @LastEditTime: 2022-12-03 21:08:58
  * @Description: 
 -->
 <script lang="ts" setup>
@@ -40,6 +40,7 @@ const closeSideBar = inject('close-sidebar') as () => void
 .link {
 	display: block;
 	margin: 4px 0;
+	padding: 8px 0;
 	color: var(--vp-c-text-2);
 	transition: color 0.5s;
 }
@@ -60,7 +61,7 @@ const closeSideBar = inject('close-sidebar') as () => void
 
 .link-text {
 	line-height: 20px;
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: 500;
 }
 

@@ -14,7 +14,9 @@ const props = defineProps<{
 let navEl = ref<HTMLElement | null>(null)
 
 function lockBodyScroll() {
-	disableBodyScroll(navEl.value!, { reserveScrollBarGap: true })
+	if (navEl.value) {
+		disableBodyScroll(navEl.value as any, { reserveScrollBarGap: true })
+	}
 }
 
 function unlockBodyScroll() {
@@ -92,15 +94,10 @@ watchPostEffect(async () => {
 	}
 }
 
-@media (min-width: 1440px) {
-	.VPSidebar {
-		padding-left: max(32px, calc((100% - (var(--vp-layout-max-width) - 64px)) / 2));
-		width: calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 32px);
-	}
-}
-
 .nav {
 	outline: 0;
+	padding-top: 30px;
+	padding-left: 24px;
 }
 
 .group + .group {

@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-12-02 15:46:07
  * @LastEditors: shen
- * @LastEditTime: 2022-12-02 15:49:33
+ * @LastEditTime: 2022-12-03 21:54:38
  * @Description: 
 -->
 <script setup lang="ts">
@@ -14,14 +14,12 @@ const { site } = useData()
 <template>
 	<div class="NotFound">
 		<p class="code">404</p>
-		<h1 class="title">PAGE NOT FOUND</h1>
+		<h1 class="title">您访问的页面不存在</h1>
 		<div class="divider" />
-		<blockquote class="quote">
-			But if you don't change your direction, and if you keep looking, you may end up where you are heading.
-		</blockquote>
+		<blockquote class="quote">点击下方按钮，返回首页吧</blockquote>
 
 		<div class="action">
-			<a class="link" :href="(site as any).base" aria-label="go to home"> Take me home </a>
+			<a class="link" :href="(site as any).base" aria-label="go to home"> 返回首页 </a>
 		</div>
 	</div>
 </template>

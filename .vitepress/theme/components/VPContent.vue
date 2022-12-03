@@ -1,3 +1,10 @@
+<!--
+ * @Author: shen
+ * @Date: 2022-12-02 16:55:05
+ * @LastEditors: shen
+ * @LastEditTime: 2022-12-03 19:18:36
+ * @Description: 
+-->
 <script setup lang="ts">
 import { useRoute, useData } from 'vitepress'
 import { useSidebar } from '../composables/sidebar.js'
@@ -19,14 +26,14 @@ const NotFound = inject('NotFound')
 		id="VPContent"
 		:class="{
 			'has-sidebar': hasSidebar,
-			'is-home': frontmatter.layout === 'home'
+			'is-home': (frontmatter as any).layout === 'home'
 		}"
 	>
 		<NotFound v-if="route.component === NotFound" />
 
-		<VPPage v-else-if="frontmatter.layout === 'page'" />
+		<VPPage v-else-if="(frontmatter as any).layout === 'page'" />
 
-		<VPHome v-else-if="frontmatter.layout === 'home'">
+		<VPHome v-else-if="(frontmatter as any).layout === 'home'">
 			<template #home-hero-before><slot name="home-hero-before" /></template>
 			<template #home-hero-after><slot name="home-hero-after" /></template>
 			<template #home-features-before><slot name="home-features-before" /></template>
@@ -76,10 +83,10 @@ const NotFound = inject('NotFound')
 	}
 }
 
-@media (min-width: 1440px) {
+/* @media (min-width: 1440px) {
 	.VPContent.has-sidebar {
 		padding-right: calc((100vw - var(--vp-layout-max-width)) / 2);
 		padding-left: calc((100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width));
 	}
-}
+} */
 </style>
