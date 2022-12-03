@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-12-02 10:42:47
  * @LastEditors: shen
- * @LastEditTime: 2022-12-02 18:57:29
+ * @LastEditTime: 2022-12-03 17:01:27
  * @Description:
  */
 import { defineConfig } from 'vitepress'
@@ -50,6 +50,17 @@ export default defineConfig({
 		logo: BASE_URL + '/images/logo.png',
 		// nav,
 		// sidebar,
+		algolia: {
+			appId: 'YSCZ4HY6BZ',
+			apiKey: 'afaa8e2b4006fa52eca0cc676ce76848',
+			indexName: 'sheneTable'
+		},
+		socialLinks: [{ icon: 'github', link: 'https://github.com/xh-shen/table-doc' }],
+		localeLinks: {
+			text: '简体中文',
+			items: []
+		},
+
 		footer: {
 			copyright: 'Copyright © 2022-present Shen'
 		}
@@ -64,5 +75,5 @@ export default defineConfig({
 			}
 		}
 	},
-	vite
+	vite: vite as any
 })

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { useSidebar } from '../composables/sidebar.js'
 import VPNavBarTitle from './VPNavBarTitle.vue'
+import VPNavBarSearch from './VPNavBarSearch.vue'
 import VPNavBarMenu from './VPNavBarMenu.vue'
 import VPNavBarTranslations from './VPNavBarTranslations.vue'
 import VPNavBarAppearance from './VPNavBarAppearance.vue'
@@ -29,6 +30,7 @@ const { hasSidebar } = useSidebar()
 
 			<div class="content">
 				<slot name="nav-bar-content-before" />
+				<VPNavBarSearch class="search" />
 				<VPNavBarMenu class="menu" />
 				<VPNavBarTranslations class="translations" />
 				<VPNavBarAppearance class="appearance" />
