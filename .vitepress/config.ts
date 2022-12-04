@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-12-02 10:42:47
  * @LastEditors: shen
- * @LastEditTime: 2022-12-04 09:28:40
+ * @LastEditTime: 2022-12-04 16:30:48
  * @Description:
  */
 import { defineConfig } from 'vitepress'
@@ -10,7 +10,7 @@ import { nav } from './config/nav'
 import { sidebar } from './config/sidebar'
 import { theme } from './config/theme'
 import { vite } from './config/vite'
-// import { mdPlugin } from './config/plugins'
+import { mdPlugin } from './config/plugins'
 
 const BASE_URL = process.env.NODE_ENV === 'production' ? '' : ''
 
@@ -52,11 +52,11 @@ export default defineConfig({
 		sidebar,
 		algolia: {
 			appId: 'YSCZ4HY6BZ',
-			apiKey: 'd900d893ec991f181054e022ba87da55',
-			indexName: 'table',
-			searchParameters: {
-				facetFilters: ['tags:guide,api']
-			}
+			apiKey: 'b9f4d9dd8b01ecbff97b2f1274a37a73',
+			indexName: 'table'
+			// searchParameters: {
+			// 	facetFilters: ['tags:guide,api']
+			// }
 		},
 		socialLinks: [{ icon: 'github', link: 'https://github.com/xh-shen/table-doc' }],
 		localeLinks: {
@@ -69,8 +69,9 @@ export default defineConfig({
 		}
 	},
 	markdown: {
-		// config: md => mdPlugin(md)
+		config: md => mdPlugin(md),
 		theme: theme as any
+		// lineNumbers: true
 	},
 	vue: {
 		template: {

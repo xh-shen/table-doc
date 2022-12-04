@@ -210,11 +210,11 @@
 	--vp-code-line-height: 1.7;
 	--vp-code-font-size: 0.875em;
 
-	--vp-code-block-color: var(--vp-c-text-dark-1);
+	--vp-code-block-color: var(--vp-c-text-light-1);
 	--vp-code-block-bg: #f5f7fa;
 
 	--vp-code-line-highlight-color: rgba(0, 0, 0, 0.5);
-	--vp-code-line-number-color: var(--vp-c-text-dark-3);
+	--vp-code-line-number-color: var(--vp-c-text-light-3);
 
 	--vp-code-line-diff-add-color: rgba(125, 191, 123, 0.1);
 	--vp-code-line-diff-add-symbol-color: rgba(125, 191, 123, 0.5);
@@ -231,8 +231,10 @@
 
 .dark {
 	--vp-code-block-bg: var(--vp-c-bg-alt);
+	--vp-code-block-color: var(--vp-c-text-dark-1);
 	--vp-code-copy-code-hover-bg: rgba(255, 255, 255, 0.05);
 	--vp-code-copy-code-active-text: var(--vp-c-text-dark-2);
+	--vp-code-line-number-color: var(--vp-c-text-dark-3);
 }
 
 /**

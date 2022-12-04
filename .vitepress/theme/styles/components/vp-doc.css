@@ -20,9 +20,7 @@
 }
 
 .vp-doc h2 {
-	margin: 48px 0 16px;
-	border-top: 1px solid var(--vp-c-divider-light);
-	padding-top: 24px;
+	margin: 40px 0 16px;
 	letter-spacing: -0.02em;
 	line-height: 32px;
 	font-size: 24px;
@@ -113,26 +111,26 @@
  * Lists
  * -------------------------------------------------------------------------- */
 
-.vp-doc ul,
-.vp-doc ol {
+.vp-doc > div > ul,
+.vp-doc > div > ol {
 	padding-left: 1.25rem;
 	margin: 16px 0;
 }
 
-.vp-doc ul {
+.vp-doc > div > ul {
 	list-style: disc;
 }
 
-.vp-doc ol {
+.vp-doc > div > ol {
 	list-style: decimal;
 }
 
-.vp-doc li + li {
+.vp-doc > div > ul li + li {
 	margin-top: 8px;
 }
 
-.vp-doc li > ol,
-.vp-doc li > ul {
+.vp-doc > div > ul li > ol,
+.vp-doc > div > ul li > ul {
 	margin: 8px 0 0;
 }
 
@@ -291,9 +289,9 @@
 	word-spacing: normal;
 	word-break: normal;
 	word-wrap: normal;
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
-	tab-size: 4;
+	-moz-tab-size: 2;
+	-o-tab-size: 2;
+	tab-size: 2;
 	-webkit-hyphens: none;
 	-moz-hyphens: none;
 	-ms-hyphens: none;
@@ -395,7 +393,7 @@
 	bottom: 0;
 	left: 0;
 	z-index: 3;
-	border-right: 1px solid var(--vp-c-divider-dark-2);
+	border-right: 1px solid var(--vp-c-divider-light);
 	padding-top: 16px;
 	width: 32px;
 	text-align: center;

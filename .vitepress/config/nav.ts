@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-12-03 18:37:31
  * @LastEditors: shen
- * @LastEditTime: 2022-12-03 18:53:26
+ * @LastEditTime: 2022-12-04 18:59:47
  * @Description:
  */
 import type { DefaultTheme } from 'vitepress'
@@ -20,7 +20,7 @@ export const nav: DefaultTheme.NavItem[] = [
 	},
 	{
 		text: '示例',
-		link: '/demo/',
+		link: '/demo/basic',
 		activeMatch: '/demo/'
 	}
 ]

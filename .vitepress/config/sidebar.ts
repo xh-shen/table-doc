@@ -2,14 +2,14 @@
  * @Author: shen
  * @Date: 2022-05-09 12:53:21
  * @LastEditors: shen
- * @LastEditTime: 2022-12-03 20:59:48
+ * @LastEditTime: 2022-12-04 18:58:55
  * @Description:
  */
 import type { DefaultTheme } from 'vitepress'
 
 const guideSidebars = [
 	{
-		text: '指南',
+		text: '',
 		items: [
 			{
 				text: '介绍',
@@ -22,11 +22,15 @@ const guideSidebars = [
 
 			{
 				text: '国际化',
-				link: '/guide/i18n'
+				link: '/guide/locale'
 			},
 			{
-				text: '主题',
+				text: '动态主题',
 				link: '/guide/theming'
+			},
+			{
+				text: '暗黑模式',
+				link: '/guide/dark-mode'
 			}
 		]
 	}

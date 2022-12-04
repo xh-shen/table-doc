@@ -2,14 +2,13 @@
  * @Author: shen
  * @Date: 2022-06-20 08:57:01
  * @LastEditors: shen
- * @LastEditTime: 2022-12-04 10:25:43
+ * @LastEditTime: 2022-12-04 18:49:37
  * @Description:
  */
-import { resolve } from 'path'
-// import Inspect from 'vite-plugin-inspect'
-// import mkcert from 'vite-plugin-mkcert'
+import Inspect from 'vite-plugin-inspect'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-// import { MarkdownTransform } from '../plugins/markdown-transform'
+import { resolve } from 'path'
+import { MarkdownTransform } from '../plugins/markdown-transform'
 import type { Alias } from 'vite'
 
 const projRoot = resolve(__dirname, '../../')
@@ -39,10 +38,5 @@ export const vite = {
 	resolve: {
 		alias
 	},
-	plugins: [
-		vueJsx()
-		// MarkdownTransform(),
-		// Inspect(),
-		// mkcert(),
-	]
+	plugins: [vueJsx(), MarkdownTransform(), Inspect()]
 }

@@ -1,8 +1,8 @@
-# 快速开始 {#getting-started}
+# 快速开始
 
 本节将介绍如何在项目中使用 Shene Table。
 
-## 环境支持 {#env-support}
+## 环境支持
 
 由于 Vue 3 不再支持 IE11，Shene Table 也不再支持 IE 浏览器。
 
@@ -10,7 +10,7 @@
 | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
 | Edge ≥ 79                                                              | Firefox ≥ 78                                                                      | Chrome ≥ 64                                                                    | Safari ≥ 12                                                                    |
 
-## 使用包管理器{#use-package}
+## 使用包管理器
 
 我们建议您使用包管理器 (npm, [yarn](https://classic.yarnpkg.com/lang/en/), [pnpm](https://pnpm.io/)) 安装 Shene Table
 
@@ -27,11 +27,11 @@ $ yarn add @shene/table
 $ pnpm install @shene/table
 ```
 
-## 在项目中使用{#project-use}
+## 在项目中使用
 
 ### 全局注册
 
-我们建议直接在入口处导入进行全局注册，组件内部会自动注册子组件（`STableColumn`、 `STableColumnGroup`、 `STableSummary`、 `STableSummaryRow`、 `STableSummaryCell`）：
+我们建议直接在入口处导入进行全局注册，组件内部会自动注册子组件（`STableConfigProvider`、`STableColumn`、 `STableColumnGroup`、 `STableSummary`、 `STableSummaryRow`、 `STableSummaryCell`）：
 
 ```ts
 import { createApp } from 'vue'
@@ -45,9 +45,13 @@ app.use(STable)
 app.mount('#app')
 ```
 
-在模板中的对应使用的组件名称为下划线，如：`STable` 对应 `table` 等等：
+在模板中的对应使用的组件名称为下划线，如：`STable` 对应 `s-table` 等等：
 
 ```vue
+<template>
+	<s-table :columns="columns" :data-source="dataSource"></s-table>
+</template>
+
 <script setup lang="ts">
 interface DataItem {
 	key: number
@@ -58,14 +62,13 @@ interface DataItem {
 
 const columns = [
 	{
-		title: 'Full Name',
+		title: 'Name',
 		dataIndex: 'name'
 	},
 	{
 		title: 'Age',
 		dataIndex: 'age'
 	},
-	//...
 	{
 		title: 'Column 3',
 		dataIndex: 'address'
@@ -80,65 +83,11 @@ const data: DataItem[] = []
 for (let i = 0; i < 1000; i++) {
 	data.push({
 		key: i,
-		name: `Edrward ${i}`,
+		name: `Shene ${i}`,
 		age: i + 1,
-		address: `London Park no. ${i}`
+		address: `China changchun ${i}`
 	})
 }
+const dataSource = ref(data)
 </script>
-
-<template>
-	<table :columns="columns" :data-source="dataSource"></table>
-</template>
-```
-
-### 局部注册
-
-下面示例使用了单文件组件 \<script setup\> 方式，导入即可直接使用
-
-```vue
-<script setup lang="ts">
-import STable from '@shene/table'
-
-interface DataItem {
-	key: number
-	name: string
-	age: number
-	address: string
-}
-
-const columns = [
-	{
-		title: 'Full Name',
-		dataIndex: 'name'
-	},
-	{
-		title: 'Age',
-		dataIndex: 'age'
-	},
-	//...
-	{
-		title: 'Column 3',
-		dataIndex: 'address'
-	},
-	{
-		title: 'Column 4',
-		dataIndex: 'address'
-	},
-	{ title: 'Column 5', dataIndex: 'address' }
-]
-const data: DataItem[] = []
-for (let i = 0; i < 1000; i++) {
-	data.push({
-		key: i,
-		name: `Edrward ${i}`,
-		age: i + 1,
-		address: `London Park no. ${i}`
-	})
-}
-</script>
-
-<template>
-	<STable :columns="columns" :data-source="dataSource"></STable>
-</template>
 ```
