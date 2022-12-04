@@ -1,5 +1,5 @@
 git pull origin dev
-npm install --registry=https://registry.npm.taobao.org
-npm install @shene/table
-npm run build
+yarn
+yarn add @shene/table
+yarn run build
 rm -rf /www/nginx/html/table-doc-html/ && mv ./.vitepress/dist/ /www/nginx/html/table-doc-html/
