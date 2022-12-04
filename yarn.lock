@@ -930,10 +930,10 @@
     estree-walker "^2.0.2"
     picomatch "^2.3.1"
 
-"@shene/table@npm:@shene/table@latest":
-  version "1.0.0-alpha.9"
-  resolved "https://registry.yarnpkg.com/@shene/table/-/table-1.0.0-alpha.9.tgz#2b037697663bd901050810057587b89326a9091b"
-  integrity sha512-+cGrxn17L0s/APwTE6LkBIkkLoSFElG3Bt5pJTRrRQqR9HrIC6AYQyZGei0z1MdgukmRladEjbT5JD/OnVOwgQ==
+"@shene/table@^1.0.0-alpha.13":
+  version "1.0.0-alpha.13"
+  resolved "https://registry.yarnpkg.com/@shene/table/-/table-1.0.0-alpha.13.tgz#aa81687ffd6a222584a1b9d930f4a394c36d9474"
+  integrity sha512-rk6+CLaWMP18HOLFV4BRo4EM16dNGG/tN7Rq0YVxRsSQChcPoJ2Fo43vacEJ2IdZOuHT/omIMGudzyVIbPDM7w==
   dependencies:
     dom-align "^1.12.3"
     lodash "4.17.15"
