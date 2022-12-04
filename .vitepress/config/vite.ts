@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-06-20 08:57:01
  * @LastEditors: shen
- * @LastEditTime: 2022-12-03 12:05:38
+ * @LastEditTime: 2022-12-04 10:25:43
  * @Description:
  */
 import { resolve } from 'path'
@@ -15,7 +15,7 @@ import type { Alias } from 'vite'
 const projRoot = resolve(__dirname, '../../')
 
 const alias: Alias[] = []
-if (process.env.DOC_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
 	alias.push(
 		{
 			find: /^@shene\/table$/,

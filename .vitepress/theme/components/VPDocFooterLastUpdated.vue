@@ -1,3 +1,10 @@
+<!--
+ * @Author: shen
+ * @Date: 2022-12-02 16:55:05
+ * @LastEditors: shen
+ * @LastEditTime: 2022-12-04 08:15:41
+ * @Description: 
+-->
 <script setup lang="ts">
 import { ref, computed, watchEffect, onMounted } from 'vue'
 import { useData } from 'vitepress'
@@ -20,7 +27,7 @@ onMounted(() => {
 
 <template>
 	<p class="VPLastUpdated">
-		{{ theme.lastUpdatedText ?? 'Last updated' }}:
+		{{ (theme as any).lastUpdatedText ?? '最后修改时间' }}:
 		<time :datetime="isoDatetime">{{ datetime }}</time>
 	</p>
 </template>

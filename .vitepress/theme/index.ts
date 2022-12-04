@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-12-02 15:46:07
  * @LastEditors: shen
- * @LastEditTime: 2022-12-02 22:19:09
+ * @LastEditTime: 2022-12-04 10:30:36
  * @Description:
  */
 import 'element-plus/dist/index.css'
@@ -18,7 +18,7 @@ import './styles/components/vp-sponsor.css'
 import '@shene/table/dist/index.css'
 import './styles/element-vars.css'
 
-import STable, { setLicenseKey } from '@shene/table'
+import * as STable from '@shene/table'
 import ElementPlus from 'element-plus'
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 import { globals } from '../components'
@@ -36,7 +36,8 @@ export { default as VPTeamPageTitle } from './components/VPTeamPageTitle.vue'
 export { default as VPTeamPageSection } from './components/VPTeamPageSection.vue'
 export { default as VPTeamMembers } from './components/VPTeamMembers.vue'
 
-setLicenseKey('5e20653c1e1eae55548cf5b81b22b37bRE9NQUlOPXd3dy54aW5naGFuLmNvbSxFWFBJUlk9MTcwMDY2ODgwMDAwMA==')
+const { setLicenseKey } = STable
+setLicenseKey('95cc65b4d02a57205c17469dc1a32455RE9NQUlOPXNoZW5lLm9yZy5jbixFWFBJUlk9MTk4NTYxNjAwMDAwMA==')
 
 const theme: Theme = {
 	Layout,
@@ -46,7 +47,7 @@ const theme: Theme = {
 		app.use(ElementPlus as any, {
 			locale: zhCn
 		})
-		app.use(STable)
+		app.use(STable.default)
 		globals.forEach(([name, Comp]) => {
 			app.component(name, Comp as any)
 		})
