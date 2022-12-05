@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-05-09 12:53:21
  * @LastEditors: shen
- * @LastEditTime: 2022-12-04 18:58:55
+ * @LastEditTime: 2022-12-05 10:14:11
  * @Description:
  */
 import type { DefaultTheme } from 'vitepress'
@@ -31,6 +31,10 @@ const guideSidebars = [
 			{
 				text: '暗黑模式',
 				link: '/guide/dark-mode'
+			},
+			{
+				text: '更新日志',
+				link: '/guide/changelog'
 			}
 		]
 	}
