@@ -56,7 +56,7 @@ watchPostEffect(async () => {
 	bottom: 0;
 	left: 0;
 	z-index: var(--vp-z-index-sidebar);
-	padding: 32px 32px 96px;
+	padding: 32px 20px 96px;
 	width: calc(100vw - 64px);
 	max-width: 320px;
 	background-color: var(--vp-c-bg);
@@ -96,8 +96,7 @@ watchPostEffect(async () => {
 
 .nav {
 	outline: 0;
-	padding-top: 30px;
-	padding-left: 24px;
+	padding-top: 10px;
 }
 
 .group + .group {
@@ -109,7 +108,7 @@ watchPostEffect(async () => {
 @media (min-width: 960px) {
 	.group {
 		padding-top: 10px;
-		width: calc(var(--vp-sidebar-width) - 64px);
+		/* width: calc(var(--vp-sidebar-width) - 64px); */
 	}
 
 	.group + .group {

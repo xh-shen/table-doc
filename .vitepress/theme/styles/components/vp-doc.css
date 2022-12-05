@@ -138,36 +138,62 @@
  * Table
  * -------------------------------------------------------------------------- */
 
-.vp-doc table {
-	display: block;
+.vp-doc > div > table {
 	border-collapse: collapse;
 	margin: 20px 0;
-	overflow-x: auto;
+	overflow: hidden;
+	font-size: 13px;
+	font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+	line-height: 1.5714285714285714;
+	border: 0;
+	width: 100%;
+	border-radius: 6px;
+	box-shadow: inset 0px 1px 0px var(--vp-c-bg-mute), inset 0px -1px 0px var(--vp-c-bg-mute),
+		inset -1px 0px 0px var(--vp-c-bg-mute), inset 1px 0px 0px var(--vp-c-bg-mute);
 }
 
-.vp-doc tr {
-	border-top: 1px solid var(--vp-c-divider);
+.vp-doc > div > table tr {
 	transition: background-color 0.5s;
 }
 
-.vp-doc tr:nth-child(2n) {
+/* .vp-doc tr:nth-child(2n) {
 	background-color: var(--vp-c-bg-soft);
+} */
+
+.vp-doc > div > table th,
+.vp-doc > div > table td {
+	padding: 16px;
+	line-height: 22px;
+	text-align: left;
+	font-size: 14px;
+	border-bottom: 1px solid var(--vp-c-bg-mute);
 }
 
-.vp-doc th,
-.vp-doc td {
-	border: 1px solid var(--vp-c-divider);
-	padding: 12px 16px;
+.vp-doc > div > table tr:hover {
+	background-color: var(--vp-c-bg-alt);
 }
 
-.vp-doc th {
+.vp-doc > div > table th {
 	font-size: 16px;
 	font-weight: 600;
-	background-color: var(--vp-c-white-soft);
+	background-color: var(--vp-c-bg-mute);
 }
 
-.dark .vp-doc th {
-	background-color: var(--vp-c-black);
+.vp-doc._doc_api > div > table th {
+	border: 0;
+	padding: 16px;
+	line-height: 22px;
+	text-align: left;
+	font-size: 14px;
+	white-space: nowrap;
+}
+
+.vp-doc._doc_api > div > table td:nth-child(1) {
+	font-weight: 700;
+}
+
+.vp-doc._doc_api > div > table td:nth-child(4) {
+	word-break: break-all;
 }
 
 /**

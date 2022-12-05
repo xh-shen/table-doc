@@ -1,3 +1,10 @@
+<!--
+ * @Author: shen
+ * @Date: 2022-12-02 16:55:05
+ * @LastEditors: shen
+ * @LastEditTime: 2022-12-05 20:20:53
+ * @Description: 
+-->
 <script lang="ts" setup>
 import { useData } from 'vitepress'
 import { isActive } from '../support/utils.js'
@@ -12,7 +19,7 @@ const { page } = useData()
 
 <template>
 	<div class="VPMenuLink">
-		<VPLink :class="{ active: isActive(page.relativePath, item.activeMatch || item.link) }" :href="item.link">
+		<VPLink :class="{ active: isActive((page as any).relativePath, item.activeMatch || item.link) }" :href="item.link">
 			{{ item.text }}
 		</VPLink>
 	</div>
@@ -33,6 +40,7 @@ const { page } = useData()
 	font-size: 14px;
 	font-weight: 500;
 	color: var(--vp-c-text-1);
+	background-color: var(vp-c-brand);
 	white-space: nowrap;
 	transition: background-color 0.25s, color 0.25s;
 }

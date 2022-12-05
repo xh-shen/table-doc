@@ -30,8 +30,10 @@
 
 	--vp-c-divider-light-1: rgba(60, 60, 60, 0.29);
 	--vp-c-divider-light-2: rgba(60, 60, 60, 0.12);
+	--vp-c-divider-light-3: rgba(60, 60, 60, 0.08);
 	--vp-c-divider-dark-1: rgba(84, 84, 84, 0.65);
 	--vp-c-divider-dark-2: rgba(84, 84, 84, 0.48);
+	--vp-c-divider-dark-3: rgba(84, 84, 84, 0.24);
 
 	--vp-c-text-light-1: var(--vp-c-indigo);
 	--vp-c-text-light-2: rgba(60, 60, 60, 0.7);
@@ -95,6 +97,7 @@
 
 	--vp-c-divider: var(--vp-c-divider-light-1);
 	--vp-c-divider-light: var(--vp-c-divider-light-2);
+	--vp-c-divider-lighter: var(--vp-c-divider-light-3);
 
 	--vp-c-divider-inverse: var(--vp-c-divider-dark-1);
 	--vp-c-divider-inverse-light: var(--vp-c-divider-dark-2);
@@ -131,6 +134,7 @@
 
 	--vp-c-divider: var(--vp-c-divider-dark-1);
 	--vp-c-divider-light: var(--vp-c-divider-dark-2);
+	--vp-c-divider-lighter: var(--vp-c-divider-dark-3);
 
 	--vp-c-divider-inverse: var(--vp-c-divider-light-1);
 	--vp-c-divider-inverse-light: var(--vp-c-divider-light-2);
@@ -367,7 +371,7 @@
  * -------------------------------------------------------------------------- */
 
 :root {
-	--vp-sidebar-width: 272px;
+	--vp-sidebar-width: 260px;
 }
 
 /**

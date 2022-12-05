@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-12-02 16:55:05
  * @LastEditors: shen
- * @LastEditTime: 2022-12-03 21:08:58
+ * @LastEditTime: 2022-12-05 20:18:30
  * @Description: 
 -->
 <script lang="ts" setup>
@@ -23,7 +23,6 @@ const closeSideBar = inject('close-sidebar') as () => void
 	<VPLink
 		class="link"
 		:class="{ active: isActive((page as any).relativePath, item.link) }"
-		:style="{ paddingLeft: 16 * (depth - 1) + 'px' }"
 		:href="item.link"
 		@click="closeSideBar"
 	>
@@ -40,17 +39,19 @@ const closeSideBar = inject('close-sidebar') as () => void
 .link {
 	display: block;
 	margin: 4px 0;
-	padding: 8px 0;
+	padding: 8px 12px;
 	color: var(--vp-c-text-2);
 	transition: color 0.5s;
+	border-radius: 4px;
 }
 
 .link:hover {
-	color: var(--vp-c-text-1);
+	background-color: var(--vp-c-bg-mute);
 }
 
 .link.active {
-	color: var(--vp-c-brand);
+	color: var(--vp-c-white);
+	background-color: var(--vp-c-brand);
 }
 
 .link :deep(.icon) {
@@ -61,8 +62,8 @@ const closeSideBar = inject('close-sidebar') as () => void
 
 .link-text {
 	line-height: 20px;
-	font-size: 16px;
-	font-weight: 500;
+	font-size: 14px;
+	font-weight: 400;
 }
 
 .link-text.light {

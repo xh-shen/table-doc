@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-12-02 16:55:05
  * @LastEditors: shen
- * @LastEditTime: 2022-12-02 18:56:39
+ * @LastEditTime: 2022-12-05 20:24:45
  * @Description: 
 -->
 <script setup lang="ts">
@@ -38,8 +38,6 @@ const { hasSidebar } = useSidebar()
 	.VPNavBarTitle.has-sidebar {
 		margin-right: 32px;
 		width: calc(var(--vp-sidebar-width) - 64px);
-		border-bottom-color: var(--vp-c-divider-light);
-		background-color: var(--vp-c-bg-alt);
 	}
 }
 
