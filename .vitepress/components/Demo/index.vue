@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-06-20 09:32:09
  * @LastEditors: shen
- * @LastEditTime: 2022-12-04 23:01:56
+ * @LastEditTime: 2022-12-05 16:03:16
  * @Description: 
 -->
 <script lang="ts">
@@ -29,17 +29,22 @@ import VSourceCode from './source-code.vue'
 const props = defineProps<{
 	demos: object
 	source: string
+	sourceJs: string
 	path: string
 	rawSource: string
+	rawSourceJs: string
 	description?: string
 }>()
 
 const vm = getCurrentInstance()!
 const formRef = ref<any>(null)
+const tabActive = ref('ts')
 
+const rawSource = computed(() => (tabActive.value === 'ts' ? props.rawSource : props.rawSourceJs))
 const { copy, isSupported } = useClipboard({
-	source: decodeURIComponent(props.rawSource),
-	read: false
+	source: computed(() => {
+		return decodeURIComponent(tabActive.value === 'ts' ? props.rawSource : props.rawSourceJs)
+	})
 })
 
 const [sourceVisible, toggleSourceVisible] = useToggle()
@@ -115,9 +120,19 @@ const handleStackblitz = () => {
 						<input type="hidden" name="project[files][.stackblitzrc]" :value="stackblitzRc" />
 						<input type="hidden" name="project[template]" value="node" />
 
-						<ElIcon :size="16" class="op-btn">
-							<svg viewBox="0 0 28 28" height="20">
-								<path fill="currentColor" d="M12.747 16.273h-7.46L18.925 1.5l-3.671 10.227h7.46L9.075 26.5l3.671-10.227z"></path>
+						<ElIcon :size="14" class="op-btn">
+							<svg
+								viewBox="64 64 896 896"
+								focusable="false"
+								data-icon="thunderbolt"
+								width="1em"
+								height="1em"
+								fill="currentColor"
+								aria-hidden="true"
+							>
+								<path
+									d="M848 359.3H627.7L825.8 109c4.1-5.3.4-13-6.3-13H436c-2.8 0-5.5 1.5-6.9 4L170 547.5c-3.1 5.3.7 12 6.9 12h174.4l-89.4 357.6c-1.9 7.8 7.5 13.3 13.3 7.7L853.5 373c5.2-4.9 1.7-13.7-5.5-13.7zM378.2 732.5l60.3-241H281.1l189.6-327.4h224.6L487 427.4h211L378.2 732.5z"
+								></path>
 							</svg>
 						</ElIcon>
 					</form>
@@ -140,30 +155,56 @@ const handleStackblitz = () => {
 						</svg>
 					</ElIcon>
 				</ElTooltip>
-				<ElTooltip content="复制代码" :show-arrow="false">
-					<ElIcon :size="16" class="op-btn" @click="handleCopyCode">
-						<svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" width="1.2em" height="1.2em" data-v-65a7fb6c="">
+				<ElTooltip content="在 CodePen 中打开" :show-arrow="false">
+					<ElIcon :size="14" class="op-btn" @click="handleCodeSandbox">
+						<svg viewBox="0 0 15 15" fill="currentColor">
 							<path
-								fill="currentColor"
-								d="M7 6V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-3v3c0 .552-.45 1-1.007 1H4.007A1.001 1.001 0 0 1 3 21l.003-14c0-.552.45-1 1.007-1H7zM5.003 8L5 20h10V8H5.003zM9 6h8v10h2V4H9v2z"
+								d="M14.777304,4.75062256 L7.77734505,0.0839936563 C7.60939924,-0.0279665065 7.39060662,-0.0279665065 7.22266081,0.0839936563 L0.222701813,4.75062256 C0.0836082937,4.84334851 5.66973453e-05,4.99945222 4.6875e-05,5.16662013 L4.6875e-05,9.83324903 C4.6875e-05,10.0004355 0.0836088906,10.1565596 0.222701812,10.2492466 L7.22266081,14.9158755 C7.30662908,14.9718752 7.403316,14.999875 7.50000292,14.999875 C7.59668984,14.999875 7.69337678,14.9718752 7.77734505,14.9158755 L14.777304,10.2492466 C14.9163976,10.1565206 14.9999492,10.0004169 14.999959,9.83324903 L14.999959,5.16662013 C14.9999492,4.99945222 14.9163976,4.84334851 14.777304,4.75062256 Z M7.50000292,9.23237755 L4.90139316,7.4999502 L7.50000292,5.76755409 L10.0986127,7.4999502 L7.50000292,9.23237755 Z M8,4.89905919 L8,1.43423573 L13.598561,5.16665138 L10.9999824,6.89904747 L8,4.89905919 Z M7.00000586,4.89905919 L4.00002344,6.89904747 L1.40141366,5.16665138 L7.00000586,1.43423573 L7.00000586,4.89905919 Z M3.09865372,7.4999502 L1.00004102,8.89903575 L1.00004102,6.10089589 L3.09865372,7.4999502 Z M4.00002344,8.10085292 L7.00000586,10.1008412 L7.00000586,13.5656334 L1.40141366,9.83328028 L4.00002344,8.10085292 Z M8,10.1008412 L10.9999824,8.10085292 L13.5985922,9.83328028 L8,13.5656647 L8,10.1008412 L8,10.1008412 Z M11.9013521,7.4999502 L13.9999648,6.10089589 L13.9999648,8.899067 L11.9013521,7.4999502 Z"
 							></path>
 						</svg>
 					</ElIcon>
 				</ElTooltip>
-				<ElTooltip content="查看源代码" :show-arrow="false">
-					<ElIcon :size="16" class="op-btn" @click="toggleSourceVisible()">
-						<svg viewBox="0 0 1024 1024" version="1.1">
+				<ElTooltip content="复制代码" :show-arrow="false">
+					<ElIcon :size="14" class="op-btn" @click="handleCopyCode">
+						<svg
+							viewBox="64 64 896 896"
+							focusable="false"
+							data-icon="snippets"
+							width="1em"
+							height="1em"
+							fill="currentColor"
+							aria-hidden="true"
+						>
 							<path
-								fill="currentColor"
-								d="M375.872 810.688a46.016 46.016 0 0 1-32.832-13.504L56.768 522.88c-18.816-17.92-18.816-46.464 0-62.912l286.272-275.84c18.752-17.92 48.512-17.92 65.728 0 18.752 17.984 18.752 46.464 0 62.976l-253.44 242.816 253.44 242.816c18.752 17.92 18.752 46.464 0 62.912a39.936 39.936 0 0 1-32.896 15.04zM648.128 810.688a46.016 46.016 0 0 1-32.896-13.504c-18.752-17.984-18.752-46.464 0-62.976l253.44-242.816L613.76 247.104c-18.752-17.984-18.752-46.464 0-62.976 18.752-17.92 48.512-17.92 65.728 0l286.272 275.84c18.752 17.92 18.752 46.464 0 62.912l-284.736 274.304a48.768 48.768 0 0 1-32.832 13.44z"
+								d="M832 112H724V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H500V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H320c-17.7 0-32 14.3-32 32v120h-96c-17.7 0-32 14.3-32 32v632c0 17.7 14.3 32 32 32h512c17.7 0 32-14.3 32-32v-96h96c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM664 888H232V336h218v174c0 22.1 17.9 40 40 40h174v338zm0-402H514V336h.2L664 485.8v.2zm128 274h-56V456L544 264H360v-80h68v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h152v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h68v576z"
+							></path>
+						</svg>
+					</ElIcon>
+				</ElTooltip>
+				<ElTooltip :content="sourceVisible ? '收起代码' : '显示代码'" :show-arrow="false">
+					<ElIcon :size="16" class="op-btn" @click="toggleSourceVisible()">
+						<svg v-if="!sourceVisible" viewBox="0 0 1024 1024">
+							<path
+								d="M682.666667 810.666667c-12.8 0-21.333333-4.266667-29.866667-12.8-17.066667-17.066667-17.066667-42.666667 0-59.733334l226.133333-226.133333-226.133333-226.133333c-17.066667-17.066667-17.066667-42.666667 0-59.733334s42.666667-17.066667 59.733333 0l256 256c17.066667 17.066667 17.066667 42.666667 0 59.733334l-256 256c-8.533333 8.533333-17.066667 12.8-29.866666 12.8zM341.333333 810.666667c-12.8 0-21.333333-4.266667-29.866666-12.8l-256-256c-17.066667-17.066667-17.066667-42.666667 0-59.733334l256-256c17.066667-17.066667 42.666667-17.066667 59.733333 0s17.066667 42.666667 0 59.733334L145.066667 512l226.133333 226.133333c17.066667 17.066667 17.066667 42.666667 0 59.733334-8.533333 8.533333-17.066667 12.8-29.866667 12.8z"
+								p-id="2576"
+							></path>
+						</svg>
+						<svg viewBox="0 0 1024 1024" v-else>
+							<path
+								d="M298.900577 778.338974c-7.070023 7.070023-17.974373 7.070023-25.043373 0L20.039405 524.521175c-7.070023-7.070023-7.070023-17.974373 0-25.043373l253.8178-253.8178c7.070023-7.070023 17.974373-7.070023 25.043373 0l27.242458 27.242458c7.070023 7.070023 7.070023 17.974373 0 25.043373L112.089891 512l214.053144 214.053144c7.070023 7.070023 7.070023 17.974373 0 25.043373L298.900577 778.338974zM444.87316 873.098151c-2.726088 9.269108-12.522198 14.702863-21.24486 11.995195l-33.767058-9.269108c-9.250688-2.726088-14.702863-12.522198-11.976776-21.790282l203.148793-703.132108c2.726088-9.269108 12.522198-14.702863 21.24486-11.995195l33.767058 9.269108c9.250688 2.726088 14.702863 12.522198 11.976776 21.790282L444.87316 873.098151zM752.049215 778.338974c-7.070023 7.070023-17.974373 7.070023-25.043373 0l-27.242458-27.242458c-7.070023-7.070023-7.070023-17.974373 0-25.043373l214.053144-214.053144L699.763384 297.946856c-7.070023-7.070023-7.070023-17.974373 0-25.043373l27.242458-27.242458c7.070023-7.070023 17.974373-7.070023 25.043373 0l253.8178 253.8178c7.070023 7.070023 7.070023 17.974373 0 25.043373L752.049215 778.338974z"
+								p-id="2313"
 							></path>
 						</svg>
 					</ElIcon>
 				</ElTooltip>
 			</div>
+			<div></div>
 
 			<ElCollapseTransition>
-				<VSourceCode v-show="sourceVisible" :source="source" />
+				<ElTabs v-model="tabActive" v-show="sourceVisible" class="example-tabs">
+					<ElTabPane label="TypeScript" name="ts"><VSourceCode :source="source" /></ElTabPane>
+					<ElTabPane label="JavaScript" name="js"><VSourceCode :source="sourceJs" /></ElTabPane>
+				</ElTabs>
 			</ElCollapseTransition>
 
 			<Transition name="el-fade-in-linear">
@@ -189,7 +230,7 @@ const handleStackblitz = () => {
 		align-items: center;
 		justify-content: center;
 		height: 2.5rem;
-		border-top: 1px var(--vp-c-divider-light) solid;
+		border-top: 1px var(--vp-c-divider-light) dashed;
 		form {
 			display: inline-flex;
 			align-items: center;
@@ -205,6 +246,21 @@ const handleStackblitz = () => {
 			cursor: pointer;
 			color: var(--el-text-color-placeholder);
 			transition: 0.2s;
+		}
+	}
+
+	&-tabs {
+		border-top: 1px var(--vp-c-divider-light) dashed;
+		:deep(.el-tabs__header) {
+			display: flex;
+			justify-content: center;
+			margin: 0;
+			border-bottom: 1px var(--vp-c-divider-light) solid;
+		}
+		:deep(.el-tabs__nav-wrap) {
+			&:after {
+				display: none;
+			}
 		}
 	}
 
