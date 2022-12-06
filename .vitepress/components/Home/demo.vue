@@ -2,15 +2,16 @@
  * @Author: shen
  * @Date: 2022-12-02 21:24:41
  * @LastEditors: shen
- * @LastEditTime: 2022-12-06 14:32:45
+ * @LastEditTime: 2022-12-06 15:34:27
  * @Description: 
 -->
 <script lang="tsx">
 import { ref } from 'vue'
-import { ElTag, ElSpace, ElLink } from 'element-plus'
+import { ElSpace, ElLink } from 'element-plus'
 import type { STableColumnsType } from '@shene/table'
 
 export default {
+	components: { ElSpace, ElLink },
 	setup() {
 		const loading = ref(false)
 		const showHeader = ref(true)
@@ -56,36 +57,12 @@ export default {
 			{
 				title: '职业',
 				key: 'tags',
-				dataIndex: 'tags',
-				customRender: ({ record }) => (
-					<ElSpace>
-						{record.tags.map(tag => {
-							let type: any = 'success'
-							if (tag === '前端') {
-								type = 'danger'
-							}
-							if (tag === '项目') {
-								type = ''
-							}
-							return (
-								<ElTag type={type} key={tag}>
-									{tag.toUpperCase()}
-								</ElTag>
-							)
-						})}
-					</ElSpace>
-				)
+				dataIndex: 'tags'
 			},
 			{
 				title: '操作',
 				key: 'action',
-				width: 120,
-				customRender: () => (
-					<ElSpace size="large">
-						<ElLink>编辑</ElLink>
-						<ElLink>删除</ElLink>
-					</ElSpace>
-				)
+				width: 120
 			}
 		]
 
@@ -130,7 +107,19 @@ export default {
 					:columns="columns"
 					:scroll="{ y: 400 }"
 					:data-source="dataSource"
-				></s-table>
+				>
+					<template #bodyCell="{ column, record }">
+						<template v-if="column.key === 'action'">
+							<el-space wrapp>
+								<el-link :underline="false" type="primary">详情</el-link>
+								<el-link :underline="false" type="primary">删除</el-link>
+							</el-space>
+						</template>
+						<template v-else-if="column.key === 'tags'">
+							{{ record.tags.join('、') }}
+						</template>
+					</template>
+				</s-table>
 			</div>
 		</div>
 		<div class="demo-config">
