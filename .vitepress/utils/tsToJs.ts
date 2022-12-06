@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-12-05 13:45:20
  * @LastEditors: shen
- * @LastEditTime: 2022-12-05 14:33:46
+ * @LastEditTime: 2022-12-06 12:17:36
  * @Description:
  */
 import { transformSync } from '@babel/core'
@@ -17,7 +17,7 @@ const tsToJs = (content: string): string => {
 			[
 				require.resolve('@babel/plugin-transform-typescript'),
 				{
-					isTSX: false
+					isTSX: true
 				}
 			]
 		]
