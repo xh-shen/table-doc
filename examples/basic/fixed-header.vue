@@ -1,10 +1,3 @@
-<!--
- * @Author: shen
- * @Date: 2022-12-06 14:40:06
- * @LastEditors: shen
- * @LastEditTime: 2022-12-06 14:49:37
- * @Description: 
--->
 <template>
 	<s-table :columns="columns" :scroll="{ y: 300 }" :data-source="dataSource" :pagination="false" />
 </template>
