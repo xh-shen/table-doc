@@ -18,12 +18,15 @@
 		"noImplicitThis": false,
 		"rootDir": ".",
 		"lib": ["esnext", "dom"],
-		"types": ["node"],
+		"types": ["vite/client"],
 		"paths": {
 			"@shene/table": ["./core/src"]
 		}
 	},
+	"vueCompilerOptions": {
+		"experimentalDisableTemplateSupport": true,
+		"jsx": "preserve"
+	},
 	"include": ["**/*", ".vitepress/**/*"],
-	"exclude": ["node_modules"],
-	"references": [{ "path": "./tsconfig.node.json" }]
+	"exclude": ["node_modules"]
 }
