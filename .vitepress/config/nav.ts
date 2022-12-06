@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-12-03 18:37:31
  * @LastEditors: shen
- * @LastEditTime: 2022-12-04 18:59:47
+ * @LastEditTime: 2022-12-05 11:08:41
  * @Description:
  */
 import type { DefaultTheme } from 'vitepress'
@@ -15,7 +15,7 @@ export const nav: DefaultTheme.NavItem[] = [
 	},
 	{
 		text: '文档',
-		link: '/doc/',
+		link: '/doc/api',
 		activeMatch: '/doc/'
 	},
 	{

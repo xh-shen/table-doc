@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-05-09 12:53:21
  * @LastEditors: shen
- * @LastEditTime: 2022-12-05 10:14:11
+ * @LastEditTime: 2022-12-05 11:10:37
  * @Description:
  */
 import type { DefaultTheme } from 'vitepress'
@@ -42,11 +42,15 @@ const guideSidebars = [
 
 const docSidebars = [
 	{
-		text: '文档',
+		text: '',
 		items: [
 			{
 				text: 'API',
 				link: '/doc/api'
+			},
+			{
+				text: '常见问题',
+				link: '/doc/questions'
 			}
 		]
 	}
