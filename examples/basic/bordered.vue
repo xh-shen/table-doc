@@ -1,5 +1,5 @@
 <template>
-	<s-table :columns="columns" stripe :data-source="dataSource" :pagination="false" />
+	<s-table :columns="columns" bordered :data-source="dataSource" :pagination="false" />
 </template>
 <script setup lang="tsx">
 import { ref } from 'vue'

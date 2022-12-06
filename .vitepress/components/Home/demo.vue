@@ -2,11 +2,13 @@
  * @Author: shen
  * @Date: 2022-12-02 21:24:41
  * @LastEditors: shen
- * @LastEditTime: 2022-12-03 16:22:34
+ * @LastEditTime: 2022-12-06 14:32:45
  * @Description: 
 -->
 <script lang="tsx">
 import { ref } from 'vue'
+import { ElTag, ElSpace, ElLink } from 'element-plus'
+import type { STableColumnsType } from '@shene/table'
 
 export default {
 	setup() {
@@ -17,67 +19,85 @@ export default {
 		const pagination = ref(false)
 		const size = ref('default')
 
-		const cols = [
+		interface DataType {
+			key: string
+			name: string
+			age: number
+			sex: string
+			address: string
+			tags: string[]
+		}
+
+		const columns: STableColumnsType<DataType> = [
 			{
-				dataIndex: 'index',
-				key: 'index',
-				title: '序号',
-				width: 80,
-				fixed: 'left',
-				resizable: true,
-				customRender: (record: any) => record.index + 1
-			},
-			{
-				dataIndex: 'platform',
-				key: 'platform',
-				title: '平台',
-				width: 80,
-				fixed: 'left',
-				resizable: true
-			},
-			{
-				dataIndex: 'type',
-				key: 'type',
-				title: '类型'
-			},
-			{
-				dataIndex: 'default',
-				key: 'default',
-				title: '默认值'
-			},
-			{
-				dataIndex: 'description',
-				key: 'description',
-				title: '说明'
-			},
-			{
-				dataIndex: 'needed',
-				key: 'needed',
-				title: '是否必传'
-			},
-			{
-				dataIndex: 'detail.position',
-				key: 'detail.position',
-				title: '详情信息',
+				title: '姓名',
+				dataIndex: 'name',
+				key: 'name',
 				width: 120,
-				fixed: 'right',
-				ellipsis: { showTitle: false },
-				tooltip: { title: ({ value }: any) => value }
+				customRender: ({ text }) => <ElLink>{text}</ElLink>
+			},
+			{
+				title: '年龄',
+				dataIndex: 'age',
+				key: 'age',
+				width: 100
+			},
+			{
+				title: '性别',
+				dataIndex: 'sex',
+				key: 'sex',
+				width: 100
+			},
+			{
+				title: '地址',
+				dataIndex: 'address',
+				key: 'address'
+			},
+			{
+				title: '职业',
+				key: 'tags',
+				dataIndex: 'tags',
+				customRender: ({ record }) => (
+					<ElSpace>
+						{record.tags.map(tag => {
+							let type: any = 'success'
+							if (tag === '前端') {
+								type = 'danger'
+							}
+							if (tag === '项目') {
+								type = ''
+							}
+							return (
+								<ElTag type={type} key={tag}>
+									{tag.toUpperCase()}
+								</ElTag>
+							)
+						})}
+					</ElSpace>
+				)
+			},
+			{
+				title: '操作',
+				key: 'action',
+				width: 120,
+				customRender: () => (
+					<ElSpace size="large">
+						<ElLink>编辑</ElLink>
+						<ElLink>删除</ElLink>
+					</ElSpace>
+				)
 			}
 		]
 
-		const data = []
+		const data: DataType[] = []
 		for (let i = 0; i < 1000; i++) {
 			data.push({
-				index: i,
-				platform: i % 2 === 0 ? '共有' : '私有',
-				type: ['String', 'Number', 'Array', 'Object'][i % 4],
-				default: ['-', '0', '[]', '{}'][i % 4],
-				detail: {
-					position: `读取 ${i} 个数据的嵌套信息值`
-				},
-				needed: i % 4 === 0 ? '是' : '否',
-				description: '数据源'
+				key: i.toString(),
+				name: ['张三', '李四', '王五', '马六'][i % 4],
+				age: [18, 30, 26, 45][i % 4],
+				sex: ['男', '女'][i % 2],
+				address: ['北京', '上海', '天津', '重庆'][i % 4] + '市某某区某某大街520号',
+				tags: [['前端', '后端'], ['后端'], ['前端', '产品', '项目'], ['测试']][i % 4]
 			})
 		}
 
@@ -89,7 +109,7 @@ export default {
 			pagination,
 			size,
 			dataSource: ref(data),
-			columns: ref(cols)
+			columns
 		}
 	}
 }
@@ -101,7 +121,6 @@ export default {
 			<div class="demo-title">示例</div>
 			<div class="demo-content">
 				<s-table
-					rowKey="index"
 					:show-header="showHeader"
 					:loading="loading"
 					:bordered="bordered"

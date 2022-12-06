@@ -1,5 +1,5 @@
 <template>
-	<s-table :columns="columns" stripe :data-source="dataSource" :pagination="false" />
+	<s-table :columns="columns" :scroll="{ x: 2000 }" :data-source="dataSource" :pagination="false" />
 </template>
 <script setup lang="tsx">
 import { ref } from 'vue'
@@ -21,6 +21,7 @@ const columns: STableColumnsType<DataType> = [
 		dataIndex: 'name',
 		key: 'name',
 		width: 120,
+		fixed: true,
 		customRender: ({ text }) => <a>{text}</a>
 	},
 	{
@@ -67,6 +68,7 @@ const columns: STableColumnsType<DataType> = [
 		title: '操作',
 		key: 'action',
 		width: 120,
+		fixed: 'right',
 		customRender: () => (
 			<ElSpace size="large">
 				<a>编辑</a>

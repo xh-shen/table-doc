@@ -6,7 +6,7 @@
 
 基础的表格展示用法
 
-:::demo 最简单的用法。你只需要配置 `columns` 和 `dataSource` 即可展示表格。组件默认开启了分页
+:::demo 最简单的用法。你只需要配置 `columns` 和 `dataSource` 即可展示表格。
 
 basic/basic
 
@@ -19,5 +19,43 @@ basic/basic
 :::demo `stripe` 属性可以创建带斑马纹的表格。 如果 `true`, 表格将会带有斑马纹。
 
 basic/striped
+
+:::
+
+## 带边框表格
+
+:::demo 默认情况下，Table 组件是不具有竖直方向的边框的， 如果需要，可以使用 `bordered`属性，把该属性设置为 `true` 即可启用。
+
+basic/bordered
+
+:::
+
+## 固定表头
+
+纵向内容过多时，可选择固定表头。
+
+:::demo 只要设置`scroll="{ y: 300 }"`，即可实现固定表头的表格，而不需要额外的代码。
+
+basic/fixed-header
+
+:::
+
+## 固定列
+
+横向内容过多时，可选择固定列。
+
+:::demo 固定列需要使用列配置的 `fixed` 属性，它接受 Boolean 值 如果为 `true`, 列将被左侧固定. 它还接受传入字符串，left 或 right，表示左边固定还是右边固定。你需要设置 `scroll="{ x: 2000 }"` 或者 给每一列都设置宽度，当 `scrollX` 或 列宽总和超过表格宽度时出现滚动条。
+
+basic/fixed-column
+
+:::
+
+## 固定列和表头
+
+横纵内容过多时，可选择固定列和表头。
+
+:::demo 固定列和表头可以同时使用，只需要将上述两个属性分别设置好即可。
+
+basic/fixed-column-and-header
 
 :::

@@ -1,5 +1,12 @@
+<!--
+ * @Author: shen
+ * @Date: 2022-12-06 14:44:51
+ * @LastEditors: shen
+ * @LastEditTime: 2022-12-06 14:49:30
+ * @Description: 
+-->
 <template>
-	<s-table :columns="columns" stripe :data-source="dataSource" :pagination="false" />
+	<s-table :columns="columns" :scroll="{ x: 2000, y: 300 }" :data-source="dataSource" :pagination="false" />
 </template>
 <script setup lang="tsx">
 import { ref } from 'vue'
@@ -21,6 +28,7 @@ const columns: STableColumnsType<DataType> = [
 		dataIndex: 'name',
 		key: 'name',
 		width: 120,
+		fixed: true,
 		customRender: ({ text }) => <a>{text}</a>
 	},
 	{
@@ -67,6 +75,7 @@ const columns: STableColumnsType<DataType> = [
 		title: '操作',
 		key: 'action',
 		width: 120,
+		fixed: 'right',
 		customRender: () => (
 			<ElSpace size="large">
 				<a>编辑</a>
@@ -77,7 +86,7 @@ const columns: STableColumnsType<DataType> = [
 ]
 
 const data: DataType[] = []
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < 30; i++) {
 	data.push({
 		key: i.toString(),
 		name: ['张三', '李四', '王五', '马六'][i % 4],
