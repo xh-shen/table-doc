@@ -1,5 +1,5 @@
-<p align="center" style="font-size: 40px; font-weight: 600">
-  Shene Table
+<p align="center">
+  <font size=60 color="#1677ff" weight=600>Shene Table</font>
 </p>
 
 <p align="center">
