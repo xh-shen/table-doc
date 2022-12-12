@@ -962,10 +962,10 @@
     estree-walker "^2.0.2"
     picomatch "^2.3.1"
 
-"@shene/table@^1.0.0-alpha.13":
-  version "1.0.0-alpha.13"
-  resolved "https://registry.yarnpkg.com/@shene/table/-/table-1.0.0-alpha.13.tgz#aa81687ffd6a222584a1b9d930f4a394c36d9474"
-  integrity sha512-rk6+CLaWMP18HOLFV4BRo4EM16dNGG/tN7Rq0YVxRsSQChcPoJ2Fo43vacEJ2IdZOuHT/omIMGudzyVIbPDM7w==
+"@shene/table@^1.0.0-alpha.16":
+  version "1.0.0-alpha.16"
+  resolved "https://registry.yarnpkg.com/@shene/table/-/table-1.0.0-alpha.16.tgz#32d65e24232ae1003241d8af3de8d8d9b33dc607"
+  integrity sha512-SL4lqHk7nW8XOdacLisnpS5XtFN2C6/3p5fjbX7QAfpRH5+1YBUHbxNI/FMfaigQsbMzyFPjZcRlp77myGWI6Q==
   dependencies:
     dom-align "^1.12.3"
     lodash "4.17.15"

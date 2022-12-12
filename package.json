@@ -15,7 +15,7 @@
 		"prepare": "husky install"
 	},
 	"dependencies": {
-		"@shene/table": "^1.0.0-alpha.13",
+		"@shene/table": "^1.0.0-alpha.16",
 		"clipboard-copy": "^4.0.1",
 		"codesandbox": "^2.2.3",
 		"dom-align": "^1.12.3",
