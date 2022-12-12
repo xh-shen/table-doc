@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-12-04 21:39:30
  * @LastEditors: shen
- * @LastEditTime: 2022-12-11 21:31:45
+ * @LastEditTime: 2022-12-12 08:30:36
  * @Description:
  */
 import { getParameters } from 'codesandbox/lib/api/define'
@@ -105,9 +105,16 @@ export function getCodeSandboxParams(code: string, meta: Meta): string {
 					},
 					devDependencies: {
 						'@vue/cli-plugin-babel': '~4.5.0',
+						'@vue/babel-plugin-jsx': '1.1.1',
 						typescript: '^4.9.4'
 					},
 					browserslist: ['> 0.2%', 'not dead']
+				}),
+				isBinary: false
+			},
+			'babel.config.json': {
+				content: JSON.stringify({
+					plugins: ['@vue/babel-plugin-jsx']
 				}),
 				isBinary: false
 			},

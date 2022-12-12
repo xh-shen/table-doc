@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-06-20 09:32:09
  * @LastEditors: shen
- * @LastEditTime: 2022-12-11 21:37:20
+ * @LastEditTime: 2022-12-12 13:16:40
  * @Description: 
 -->
 <script lang="ts">
@@ -43,7 +43,7 @@ const tabActive = ref('ts')
 const rawSource = computed(() => (tabActive.value === 'ts' ? props.rawSource : props.rawSourceJs))
 const { copy, isSupported } = useClipboard({
 	source: computed(() => {
-		return decodeURIComponent(tabActive.value === 'ts' ? props.rawSource : props.rawSourceJs)
+		return decodeURIComponent(rawSource.value)
 	})
 })
 
@@ -78,7 +78,7 @@ const handleCodeSandbox = () => {
 		.split('/')
 		.map(str => str.charAt(0).toUpperCase() + str.slice(1))
 		.join(' ')
-	const params = getCodeSandboxParams(decodeURIComponent(rawSource.value), {
+	const params = getCodeSandboxParams(decodeURIComponent(props.rawSourceJs), {
 		title: `${title} - @shene/table`
 	})
 	const div = document.createElement('div')
