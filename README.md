@@ -1,6 +1,10 @@
 <p align="center">
-  <font size=60 color="#1677ff" weight=600>Shene Table</font>
+  <a href="https://ant.design">
+    <img width="160" src="https://table.shene.org.cn/images/logo.png">
+  </a>
 </p>
+
+<h1 align="center">Shene Table</h1>
 
 <p align="center">
   <a href="https://www.npmjs.org/package/@shene/table">
