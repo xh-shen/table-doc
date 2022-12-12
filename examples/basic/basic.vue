@@ -1,7 +1,26 @@
 <template>
-	<s-table :columns="columns" :data-source="dataSource" :pagination="false" />
+	<s-table :columns="columns" :data-source="dataSource" :pagination="false">
+		<template #bodyCell="{ text, column, record }">
+			<template v-if="column.key === 'name'">
+				<a>{{ text }}</a>
+			</template>
+			<template v-else-if="column.key === 'tags'">
+				<ElSpace>
+					<ElTag v-for="item in record.tags" :key="item" :type="item === '前端' ? 'danger' : item === '项目' ? '' : 'success'">
+						{{ item }}
+					</ElTag>
+				</ElSpace>
+			</template>
+			<template v-else-if="column.key === 'action'">
+				<ElSpace size="large">
+					<a>编辑</a>
+					<a>删除</a>
+				</ElSpace>
+			</template>
+		</template>
+	</s-table>
 </template>
-<script setup lang="tsx">
+<script setup lang="ts">
 import { ref } from 'vue'
 import { ElTag, ElSpace } from 'element-plus'
 import type { STableColumnsType } from '@shene/table'
@@ -20,8 +39,7 @@ const columns: STableColumnsType<DataType> = [
 		title: '姓名',
 		dataIndex: 'name',
 		key: 'name',
-		width: 120,
-		customRender: ({ text }) => <a>{text}</a>
+		width: 120
 	},
 	{
 		title: '年龄',
@@ -36,43 +54,20 @@ const columns: STableColumnsType<DataType> = [
 		width: 100
 	},
 	{
+		title: '职业',
+		key: 'tags',
+		dataIndex: 'tags',
+		width: 220
+	},
+	{
 		title: '地址',
 		dataIndex: 'address',
 		key: 'address'
 	},
 	{
-		title: '职业',
-		key: 'tags',
-		dataIndex: 'tags',
-		customRender: ({ record }) => (
-			<ElSpace>
-				{record.tags.map(tag => {
-					let type: any = 'success'
-					if (tag === '前端') {
-						type = 'danger'
-					}
-					if (tag === '项目') {
-						type = ''
-					}
-					return (
-						<ElTag type={type} key={tag}>
-							{tag.toUpperCase()}
-						</ElTag>
-					)
-				})}
-			</ElSpace>
-		)
-	},
-	{
 		title: '操作',
 		key: 'action',
-		width: 120,
-		customRender: () => (
-			<ElSpace size="large">
-				<a>编辑</a>
-				<a>删除</a>
-			</ElSpace>
-		)
+		width: 120
 	}
 ]
 
