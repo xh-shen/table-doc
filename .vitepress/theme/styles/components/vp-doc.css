@@ -262,7 +262,8 @@
 	border-radius: 4px;
 	padding: 3px 6px;
 	color: var(--vp-c-text-code);
-	background-color: var(--vp-c-bg-mute);
+	/* background-color: var(--vp-c-bg-mute); */
+	background-color: var(--vp-c-bg-code);
 	transition: color 0.5s, background-color 0.5s;
 }
 

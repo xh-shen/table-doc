@@ -112,7 +112,8 @@
 	--vp-c-text-inverse-3: var(--vp-c-text-dark-3);
 	--vp-c-text-inverse-4: var(--vp-c-text-dark-4);
 
-	--vp-c-text-code: var(--vp-c-indigo-soft);
+	--vp-c-text-code: #881f1c;
+	--vp-c-bg-code: #fff0ed;
 
 	--vp-c-brand: var(--s-color-primary);
 	--vp-c-brand-light: var(--s-color-primary-light-3);
@@ -149,7 +150,8 @@
 	--vp-c-text-inverse-3: var(--vp-c-text-light-3);
 	--vp-c-text-inverse-4: var(--vp-c-text-light-4);
 
-	--vp-c-text-code: var(--vp-c-indigo-lighter);
+	--vp-c-text-code: #ec888e;
+	--vp-c-bg-code: #472324;
 }
 
 /**
