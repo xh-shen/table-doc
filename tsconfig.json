@@ -18,7 +18,7 @@
 		"noImplicitThis": false,
 		"rootDir": ".",
 		"lib": ["esnext", "dom"],
-		"types": ["vite/client"],
+		"types": ["vite/client", "element-plus/global", "@shene/table/global"],
 		"paths": {
 			"@shene/table": ["./core/src"]
 		}
