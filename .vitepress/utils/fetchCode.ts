@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-12-05 13:41:46
  * @LastEditors: shen
- * @LastEditTime: 2022-12-05 15:14:14
+ * @LastEditTime: 2022-12-11 21:35:13
  * @Description:
  */
 const scriptRE = /<script[^>]*>([\s\S]*)<\/script>/
@@ -22,11 +22,11 @@ const reObj = {
 export function replaceScriptCode(src: string, target: string): string {
 	const scriptStr = src.match(scriptSetupRE)?.[0] || ''
 	const setup = scriptStr.indexOf('setup') > -1 ? ' setup' : ''
-	// const jsx = scriptStr.indexOf('tsx') > -1 ? ' lang="jsx"' : ''
+	const jsx = scriptStr.indexOf('tsx') > -1 ? ' lang="jsx"' : ''
 	const newCode = src.replace(
 		scriptRE,
 		`
-<scrip${setup ? 't' + setup : 't'}>
+<scrip${setup ? 't' + setup : 't'}${jsx}>
 ${target}
 </script>`
 	)

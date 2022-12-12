@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-12-04 21:39:30
  * @LastEditors: shen
- * @LastEditTime: 2022-12-04 22:55:32
+ * @LastEditTime: 2022-12-11 21:31:45
  * @Description:
  */
 import { getParameters } from 'codesandbox/lib/api/define'
@@ -18,6 +18,7 @@ export const packageJson = JSON.stringify({
 	},
 	dependencies: {
 		vue: '^3.2.40',
+		'element-plus': '^2.2.25',
 		'@shene/table': 'npm:@shene/table@latest'
 	},
 	devDependencies: {
@@ -50,16 +51,6 @@ export const stackblitzHtml = `
 	<script type="module" src="/src/main.js"></script>
 `
 
-export const stackblitzmMainJs = `
-	import { createApp } from "vue";
-	import STable from "@shene/table";
-	import Demo from './demo.vue';
-	import "@shene/table/dist/index.css";
-
-	const app = createApp(Demo);
-  app.use(STable).mount('#app');
-`
-
 export const indexHtml = `<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -87,12 +78,14 @@ components: {
 </script>`
 
 export const mainJs = `
-	import { createApp } from "vue";
-	import STable from "@shene/table";
-	import App from "./App.vue";
-	import "@shene/table/dist/index.css";
+import { createApp } from "vue";
+import STable from "@shene/table";
+import Demo from './demo.vue';
+import "@shene/table/dist/index.css";
+import 'element-plus/dist/index.css'
 
-	createApp(App).use(STable).mount("#app");
+const app = createApp(Demo);
+app.use(STable).mount('#app');
 `
 
 type Meta = {
@@ -107,11 +100,12 @@ export function getCodeSandboxParams(code: string, meta: Meta): string {
 					title: meta.title,
 					dependencies: {
 						vue: 'next',
+						'element-plus': '^2.2.25',
 						'@shene/table': 'npm:@shene/table@latest'
 					},
 					devDependencies: {
 						'@vue/cli-plugin-babel': '~4.5.0',
-						typescript: '^4.0.5'
+						typescript: '^4.9.4'
 					},
 					browserslist: ['> 0.2%', 'not dead']
 				}),
@@ -123,10 +117,6 @@ export function getCodeSandboxParams(code: string, meta: Meta): string {
 			},
 			'src/demo.vue': {
 				content: code,
-				isBinary: false
-			},
-			'src/App.vue': {
-				content: appVue,
 				isBinary: false
 			},
 			'src/main.js': {
