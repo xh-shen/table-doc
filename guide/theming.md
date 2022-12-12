@@ -2,7 +2,7 @@
 
 Shene Table 提供了一套默认主题，全部通过 CSS Vars 技术实现，动态主题的能力得到了加强。
 
-## 在 ConfigProvider 组件中配置主题
+## 在 STableProvider 组件中配置主题
 
 ### 使用 `themeColor` 属性修改主题色
 

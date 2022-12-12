@@ -2,7 +2,7 @@
 
 Shene Table **默认** 使用 **简体中文**, 如果你希望使用其他语言，你可以参考下面的方案。
 
-## 在 ConfigProvider 组件中配置
+## 在 STableProvider 组件中配置
 
 ```vue
 <template>
