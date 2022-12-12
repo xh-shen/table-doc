@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-06-20 09:32:09
  * @LastEditors: shen
- * @LastEditTime: 2022-12-05 16:38:33
+ * @LastEditTime: 2022-12-11 21:37:20
  * @Description: 
 -->
 <script lang="ts">
@@ -17,7 +17,7 @@ import { CaretTop } from '@element-plus/icons-vue'
 import {
 	getCodeSandboxParams,
 	packageJson,
-	stackblitzmMainJs,
+	mainJs,
 	stackblitzHtml,
 	viteConfigJs,
 	stackblitzRc
@@ -78,7 +78,7 @@ const handleCodeSandbox = () => {
 		.split('/')
 		.map(str => str.charAt(0).toUpperCase() + str.slice(1))
 		.join(' ')
-	const params = getCodeSandboxParams(decodeURIComponent(props.rawSource), {
+	const params = getCodeSandboxParams(decodeURIComponent(rawSource.value), {
 		title: `${title} - @shene/table`
 	})
 	const div = document.createElement('div')
@@ -113,7 +113,7 @@ const handleStackblitz = () => {
 						@click="handleStackblitz"
 					>
 						<input type="hidden" name="project[files][src/demo.vue]" :value="decodeURIComponent(rawSource)" />
-						<input type="hidden" name="project[files][src/main.js]" :value="stackblitzmMainJs" />
+						<input type="hidden" name="project[files][src/main.js]" :value="mainJs" />
 						<input type="hidden" name="project[files][index.html]" :value="stackblitzHtml" />
 						<input type="hidden" name="project[files][package.json]" :value="packageJson" />
 						<input type="hidden" name="project[files][vite.config.js]" :value="viteConfigJs" />
