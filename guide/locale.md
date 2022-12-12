@@ -6,9 +6,9 @@ Shene Table **默认** 使用 **简体中文**, 如果你希望使用其他语�
 
 ```vue
 <template>
-	<s-table-config-provider :locale="locale">
+	<s-table-provider :locale="locale">
 		<app />
-	</s-table-config-provider>
+	</s-table-provider>
 </template>
 
 <script setup lang="ts">
@@ -88,9 +88,9 @@ export default localeValues
 
 ```vue
 <template>
-	<s-table-config-provider :locale="locale">
+	<s-table-provider :locale="locale">
 		<app />
-	</s-table-config-provider>
+	</s-table-provider>
 </template>
 
 <script setup lang="ts">

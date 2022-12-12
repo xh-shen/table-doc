@@ -11,11 +11,11 @@ Shene Table 提供了一套默认主题，全部通过 CSS Vars 技术实现，�
 ```vue
 <!-- App.vue -->
 <template>
-	<s-table-config-provider :theme-color="themeColor">
+	<s-table-provider :theme-color="themeColor">
 		<s-table />
 		<s-table />
 		<s-table />
-	</s-table-config-provider>
+	</s-table-provider>
 </template>
 
 <script setup lang="ts">
@@ -30,11 +30,11 @@ const themeColor = '#00b96b'
 ```vue
 <!-- App.vue -->
 <template>
-	<s-table-config-provider custom-class="custom-table-class">
+	<s-table-provider custom-class="custom-table-class">
 		<s-table />
 		<s-table />
 		<s-table />
-	</s-table-config-provider>
+	</s-table-provider>
 </template>
 
 <script setup lang="ts"></script>
