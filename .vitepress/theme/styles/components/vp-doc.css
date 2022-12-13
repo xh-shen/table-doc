@@ -92,7 +92,7 @@
 	transition: color 0.5s;
 }
 
-.vp-doc a {
+.vp-doc a:not(.s-pagination__item a) {
 	font-weight: 500;
 	color: var(--vp-c-brand);
 	text-decoration-style: dotted;
