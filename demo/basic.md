@@ -4,11 +4,10 @@
 
 ## 基础表格
 
-基础的表格展示用法
+简单表格，使用分页切换数据。使用边框线、斑马纹等清晰呈现各数据单元格边界线，辅助信息区隔。
 
 - 使用表格属性 `columns` 设置表格列
 - 使用表格属性 `dataSource` 设置表格数据源
-- 表格默认是使用分页的，示例使用表格属性 `pagination` 关闭了分页
 
 :::demo
 
@@ -16,27 +15,35 @@ basic/basic
 
 :::
 
-## 带斑马纹表格
+## 可自定义样式的表格
 
-使用带斑马纹的表格，可以更容易区分出不同行的数据。
+简单表格，使用分页切换数据。使用边框线、斑马纹等清晰呈现各数据单元格边界线，辅助信息区隔。
 
-- 使用表格属性 `stripe` 设置表格斑马纹效果
+- 使用表格属性 `rowClassName` 设置行类名。
+- 使用表格属性 `customRow` 设置行属性。
+- 使用表格属性 `customCell` 设置单元格属性，优先级低于 `column.customCell`。
+- 使用表格属性 `customHeaderCell` 设置表头单元格属性，优先级低于 `column.customHeaderCell`。
+- 使用列属性 `customCell` 设置单元格属性。
+- 使用列属性 `customHeaderCell` 设置表头单元格属性。
+- 使用列属性 `class|className` 设置表头单元格类名。
 
 :::demo
 
-basic/striped
+basic/custom-style
 
 :::
 
-## 带边框表格
+## 单元格超出省略的表格
 
-表格默认是没有竖向边框的，使用边框可以清晰呈现各数据单元格边界线
+支持单元格文本超出省略、单独控制标题超出省略，可以取消`dom title`默认悬浮提示。
 
-- 使用表格属性 `bordered` 设置表格边框
+- 使用 `ellipsis` 设置列文本超出省略显示，默认会同时控制表头的超出省略显示；只要 `ellipsis` 为真，无论是何种数据类型都会出现超出省略。
+- 使用 `ellipsisTitle` 单独设置表头超出省略显示，优先级高于 `ellipsis`。
+- 使用 `ellipsis: { showTitle: false }`或 `ellipsisTitle: { showTitle: false }` 取消默认 `dom title` 提示。
 
 :::demo
 
-basic/bordered
+basic/ellipsis
 
 :::
 
