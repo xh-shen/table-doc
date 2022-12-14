@@ -47,31 +47,50 @@ basic/ellipsis
 
 :::
 
-## 固定表头
+## 自定义悬浮提示的表格
 
-纵向内容过多时，可选择固定表头。
+支持自定义单元格悬浮提示，需要设置列属性 `tooltip=true|TableTooltipConfig`，默认使用 `row[dataIndex]` 渲染悬浮内容，自定义渲染悬浮内容有以下 3 种方式：
 
-:::demo 只要设置`scroll="{ y: 300 }"`，即可实现固定表头的表格，而不需要额外的代码。
+- 使用 `tooltip.title` 作为渲染函数，函数参数为：`{record, column, text, value, index, recordIndexs}`，参考`职业`列。
+- 使用 `tooltip.title` 作为字符串，`tooltip.title` 的值可以直接作为渲染内容也可以作为插槽名称，如果插槽存在，则渲染插槽内容，否则直接渲染字符串，插槽参数为：`{record, column, text, value, index, recordIndexs}`，参考 `性别｜地址`列。
+- 当 `tooltip.title` 不存在时，使用 `tooltipTitle` 插槽渲染悬浮内容，插槽参数为：`{record, column, text, value, index, recordIndexs}`，参考`姓名|年龄`列。
+
+:::demo
+
+basic/tooltip
+
+:::
+
+## 固定表头的表格
+
+表格内容高度超出后，滚动时表头会自动固定。可通过 `scroll.y` 或 `height` 或 `maxHeight` 设置表格高度。
+
+- 建议使用 `scroll.y` 或 `maxHeight` 自适应高度。
+- 使用 `height` 时，表格高度将固定，适合固定区域时使用。
+
+:::demo
 
 basic/fixed-header
 
 :::
 
-## 固定列
+## 固定列的表格
 
-横向内容过多时，可选择固定列。
+列的数量过多时，使用固定列方便表格数据内容呈现，支持固定左侧列和固定右侧列。可通过给列属性设置 `fixed: 'left'|true` 或 `fixed: 'right'` 以达成固定列效果。
 
-:::demo 固定列需要使用列配置的 `fixed` 属性，它接受 Boolean 值 如果为 `true`, 列将被左侧固定. 它还接受传入字符串，left 或 right，表示左边固定还是右边固定。你需要设置 `scroll="{ x: 2000 }"` 或者 给每一列都设置宽度，当 `scrollX` 或 列宽总和超过表格宽度时出现滚动条。
+- 使用 `scroll.x|scrollX` 或者 给每一列都设置宽度，当 `scrollX` 或 列宽总和超过表格可见宽度时出现滚动条。
+
+:::demo
 
 basic/fixed-column
 
 :::
 
-## 固定列和表头
+## 固定列和表头的表格
 
-横纵内容过多时，可选择固定列和表头。
+支持同时固定表头和固定列，参考`固定表头`和`固定列`即可。
 
-:::demo 固定列和表头可以同时使用，只需要将上述两个属性分别设置好即可。
+:::demo
 
 basic/fixed-column-and-header
 
