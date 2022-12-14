@@ -95,3 +95,17 @@ basic/fixed-column
 basic/fixed-column-and-header
 
 :::
+
+## 自定义单元格的表格
+
+单元格默认使用 `row[dataIndex]` 渲染数据内容，自定义单元格有以下 2 种方式：
+
+- 使用列属性 `customRender` 作为渲染函数，函数参数为：`{value, text, record, index, column}`。
+- 使用具名插槽 `bodyCell` 渲染，插槽参数为：`{value, text, record, index, column}`。
+- 插槽 `bodyCell` 优先级高于列属性 `customRender`。
+
+:::demo
+
+basic/custom-cell
+
+:::
