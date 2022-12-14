@@ -85,6 +85,7 @@ const columns: STableColumnsType<DataType> = [
 		title: '地址',
 		dataIndex: 'address',
 		key: 'address',
+		ellipsis: true,
 		customCell: ({ rowIndex }) => {
 			if (rowIndex === 3) {
 				return {

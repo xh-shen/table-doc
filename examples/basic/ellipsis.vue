@@ -74,7 +74,8 @@ const columns: STableColumnsType<DataType> = [
 	{
 		title: '地址',
 		dataIndex: 'address',
-		key: 'address'
+		key: 'address',
+		ellipsis: true
 	},
 	{
 		title: '操作',

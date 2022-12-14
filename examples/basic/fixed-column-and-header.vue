@@ -1,5 +1,5 @@
 <template>
-	<s-table :columns="columns" :virtual="false" :scroll="{ x: 2000, y: 300 }" :data-source="dataSource" :pagination="false">
+	<s-table :columns="columns" :scroll="{ x: 1500, y: 300 }" :data-source="dataSource" :pagination="false">
 		<template #bodyCell="{ text, column, record }">
 			<template v-if="column.key === 'name'">
 				<a>{{ text }}</a>
@@ -63,7 +63,8 @@ const columns: STableColumnsType<DataType> = [
 	{
 		title: '地址',
 		dataIndex: 'address',
-		key: 'address'
+		key: 'address',
+		ellipsis: true
 	},
 	{
 		title: '操作',

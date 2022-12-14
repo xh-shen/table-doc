@@ -1,5 +1,5 @@
 <template>
-	<s-table :columns="columns" :virtual="false" :scroll="{ y: 300 }" :data-source="dataSource" :pagination="false">
+	<s-table :columns="columns" :scroll="{ y: 300 }" :data-source="dataSource" :pagination="false">
 		<template #bodyCell="{ text, column, record }">
 			<template v-if="column.key === 'name'">
 				<a>{{ text }}</a>
@@ -62,7 +62,8 @@ const columns: STableColumnsType<DataType> = [
 	{
 		title: '地址',
 		dataIndex: 'address',
-		key: 'address'
+		key: 'address',
+		ellipsis: true
 	},
 	{
 		title: '操作',
@@ -72,7 +73,7 @@ const columns: STableColumnsType<DataType> = [
 ]
 
 const data: DataType[] = []
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 10; i++) {
 	data.push({
 		key: i.toString(),
 		name: ['张三', '李四', '王五', '马六'][i % 4],

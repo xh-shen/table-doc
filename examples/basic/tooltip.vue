@@ -18,6 +18,10 @@
 				</ElSpace>
 			</template>
 		</template>
+		<template #tooltipTitle="{ value, column }">
+			<template v-if="column.key === 'name'"> ###{{ value }} </template>
+		</template>
+		<template #tooltip-address="{ value }">{{ value }}</template>
 	</s-table>
 </template>
 <script setup lang="ts">
@@ -39,30 +43,40 @@ const columns: STableColumnsType<DataType> = [
 		title: '姓名',
 		dataIndex: 'name',
 		key: 'name',
-		width: 120
+		width: 120,
+		tooltip: { placement: 'topLeft' }
 	},
 	{
 		title: '年龄',
 		dataIndex: 'age',
 		key: 'age',
-		width: 100
+		width: 100,
+		tooltip: true
 	},
 	{
 		title: '性别',
 		dataIndex: 'sex',
 		key: 'sex',
-		width: 100
+		width: 100,
+		tooltip: { title: '测试数据', placement: 'topLeft' }
 	},
 	{
 		title: '职业',
 		key: 'tags',
 		dataIndex: 'tags',
-		width: 220
+		width: 220,
+		tooltip: { title: ({ record }) => record.tags.join('/') + ' ' + record.tags.length + '职业', placement: 'topLeft' }
 	},
 	{
 		title: '地址',
 		dataIndex: 'address',
-		key: 'address'
+		key: 'address',
+		tooltip: {
+			title: 'tooltip-address',
+			color: '#f50',
+			placement: 'topLeft'
+		},
+		ellipsis: { showTitle: false }
 	},
 	{
 		title: '操作',
