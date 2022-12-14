@@ -56,7 +56,9 @@ onMounted(() => {
 		{ capture: true }
 	)
 })
-nprogress.start()
+if (isClient) {
+	nprogress.start()
+}
 </script>
 
 <template>
