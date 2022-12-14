@@ -20,7 +20,7 @@
 		</template>
 	</s-table>
 </template>
-<script setup lang="tsx">
+<script setup lang="ts">
 import { ref } from 'vue'
 import { ElTag, ElSpace } from 'element-plus'
 import type { STableColumnsType } from '@shene/table'
