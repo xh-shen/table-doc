@@ -1,3 +1,10 @@
+<!--
+ * @Author: shen
+ * @Date: 2022-12-02 16:55:05
+ * @LastEditors: shen
+ * @LastEditTime: 2022-12-14 20:44:38
+ * @Description: 
+-->
 <script lang="ts" setup>
 import type { DefaultTheme } from 'vitepress/theme'
 import { useData } from 'vitepress'
@@ -15,7 +22,7 @@ const { page } = useData()
 	<VPLink
 		:class="{
 			VPNavBarMenuLink: true,
-			active: isActive(page.relativePath, item.activeMatch || item.link, !!item.activeMatch)
+			active: isActive((page as any).relativePath, item.activeMatch || item.link, !!item.activeMatch)
 		}"
 		:href="item.link"
 		:noIcon="true"

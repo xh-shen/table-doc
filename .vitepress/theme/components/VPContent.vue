@@ -2,22 +2,34 @@
  * @Author: shen
  * @Date: 2022-12-02 16:55:05
  * @LastEditors: shen
- * @LastEditTime: 2022-12-03 19:18:36
+ * @LastEditTime: 2022-12-14 20:50:14
  * @Description: 
 -->
 <script setup lang="ts">
 import { useRoute, useData } from 'vitepress'
+import { isClient } from '@vueuse/core'
 import { useSidebar } from '../composables/sidebar.js'
+import nprogress from 'nprogress'
 import VPPage from './VPPage.vue'
 import VPHome from './VPHome.vue'
 import VPDoc from './VPDoc.vue'
-import { inject } from 'vue'
+import { inject, onUpdated, onMounted } from 'vue'
 
 const route = useRoute()
 const { frontmatter } = useData()
 const { hasSidebar } = useSidebar()
 
 const NotFound = inject('NotFound')
+
+onMounted(() => {
+	if (!isClient) return
+	nprogress.done()
+})
+
+onUpdated(() => {
+	if (!isClient) return
+	nprogress.done()
+})
 </script>
 
 <template>

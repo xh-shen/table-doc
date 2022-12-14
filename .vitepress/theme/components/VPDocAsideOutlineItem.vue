@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-12-02 16:55:05
  * @LastEditors: shen
- * @LastEditTime: 2022-12-02 16:55:37
+ * @LastEditTime: 2022-12-14 21:31:23
  * @Description: 
 -->
 <script setup lang="ts">
@@ -18,7 +18,7 @@ defineProps<{
 <template>
 	<ul :class="root ? 'root' : 'nested'">
 		<li v-for="{ children, link, title } in headers" :key="link">
-			<a class="outline-link" :href="link" @click="onClick">{{ title }}</a>
+			<a class="outline-link" :href="link" data-type="outline" @click="onClick">{{ title }}</a>
 			<template v-if="children?.length">
 				<VPDocAsideOutlineItem :headers="children" :onClick="onClick" />
 			</template>

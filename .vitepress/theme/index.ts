@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-12-02 15:46:07
  * @LastEditors: shen
- * @LastEditTime: 2022-12-11 21:21:31
+ * @LastEditTime: 2022-12-14 20:38:21
  * @Description:
  */
 import '@shene/table/dist/index.css'
@@ -19,6 +19,7 @@ import './styles/components/vp-doc.css'
 import './styles/components/vp-sponsor.css'
 import './styles/element-vars.css'
 import './styles/code.css'
+import './styles/nprogress.css'
 
 import STable from '@shene/table'
 import VPBadge from './components/VPBadge.vue'

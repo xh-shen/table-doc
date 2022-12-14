@@ -1,15 +1,10 @@
-<!--
- * @Author: shen
- * @Date: 2022-12-02 15:46:07
- * @LastEditors: shen
- * @LastEditTime: 2022-12-04 16:01:46
- * @Description: 
--->
 <script setup lang="ts">
-import { provide, watch } from 'vue'
+import { provide, watch, onMounted } from 'vue'
 import { useData, useRoute } from 'vitepress'
 import { ElConfigProvider } from 'element-plus'
+import { isClient } from '@vueuse/core'
 import { useSidebar, useCloseSidebarOnEscape } from './composables/sidebar.js'
+import nprogress from 'nprogress'
 import locale from 'element-plus/lib/locale/lang/zh-cn'
 import VPSkipLink from './components/VPSkipLink.vue'
 import VPBackdrop from './components/VPBackdrop.vue'
@@ -29,6 +24,39 @@ useCloseSidebarOnEscape(isSidebarOpen, closeSidebar)
 provide('close-sidebar', closeSidebar)
 
 const { frontmatter } = useData()
+
+onMounted(() => {
+	if (!isClient) return
+	window.addEventListener(
+		'click',
+		e => {
+			const link = (e.target as HTMLElement).closest('a')
+			if (!link) return
+			const { protocol, hostname, pathname, target, dataset } = link
+			if (dataset.type === 'outline') return
+			if (!pathname) return
+			const currentUrl = window.location
+			const extMatch = pathname.match(/\.\w+$/)
+			if (
+				!e.ctrlKey &&
+				!e.shiftKey &&
+				!e.altKey &&
+				!e.metaKey &&
+				target !== `_blank` &&
+				protocol === currentUrl.protocol &&
+				hostname === currentUrl.hostname &&
+				!(extMatch && extMatch[0] !== '.html')
+			) {
+				// e.preventDefault()
+				if (pathname !== route.path) {
+					nprogress.start()
+				}
+			}
+		},
+		{ capture: true }
+	)
+})
+nprogress.start()
 </script>
 
 <template>

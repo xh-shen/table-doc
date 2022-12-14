@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-05-09 09:00:48
  * @LastEditors: shen
- * @LastEditTime: 2022-12-03 18:54:13
+ * @LastEditTime: 2022-12-14 22:02:31
  * @Description: 
 -->
 <script setup lang="ts">
@@ -48,7 +48,7 @@ const handleCopy = async () => {
 				<p>基于 Vue3 的高性能表格组件</p>
 			</div>
 			<div class="actions">
-				<a :href="`/guide/`">
+				<a href="/guide/">
 					<el-button type="primary" round class="btn" size="large">
 						<span class="btn-icon"></span>
 						开始使用
