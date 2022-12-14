@@ -109,3 +109,17 @@ basic/fixed-column-and-header
 basic/custom-cell
 
 :::
+
+## 自定义表头的表格
+
+标题默认使用 title 渲染，自定义标题则有以下 2 种方式：
+
+- 使用 title 作为渲染函数，函数参数为：`{ sortOrder, sortColumn, sortColumns }`。
+- 使用具名插槽 `headerCell` 渲染，插槽参数为：`{title, column}`。
+- 插槽 `headerCell` 优先级高于列属性 `title`。
+
+:::demo
+
+basic/header-title
+
+:::
