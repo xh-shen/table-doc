@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-12-02 16:55:05
  * @LastEditors: shen
- * @LastEditTime: 2022-12-03 19:20:52
+ * @LastEditTime: 2022-12-15 14:02:45
  * @Description: 
 -->
 <script setup lang="ts">
@@ -42,7 +42,7 @@ function handleClick({ target: el }: Event) {
 			<div class="outline-marker" ref="marker" />
 
 			<div class="outline-title">
-				{{ (theme as any).outlineTitle || 'On this page' }}
+				{{ (theme as any).outlineTitle || '在此页面上' }}
 			</div>
 
 			<nav aria-labelledby="doc-outline-aria-label">

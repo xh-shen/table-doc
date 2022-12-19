@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-12-02 16:55:05
  * @LastEditors: shen
- * @LastEditTime: 2022-12-14 21:31:23
+ * @LastEditTime: 2022-12-15 13:58:51
  * @Description: 
 -->
 <script setup lang="ts">
@@ -44,6 +44,8 @@ defineProps<{
 	overflow: hidden;
 	text-overflow: ellipsis;
 	transition: color 0.5s;
+	font-size: 12px;
+	font-weight: 400;
 }
 
 .outline-link:hover,
