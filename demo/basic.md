@@ -112,14 +112,28 @@ basic/custom-cell
 
 ## 自定义表头的表格
 
-标题默认使用 title 渲染，自定义标题则有以下 2 种方式：
+标题默认使用列属行 `title` 渲染，自定义标题则有以下 2 种方式：
 
-- 使用 title 作为渲染函数，函数参数为：`{ sortOrder, sortColumn, sortColumns }`。
+- 使用 `title` 作为渲染函数，函数参数为：`{ sortOrder, sortColumn, sortColumns }`。
 - 使用具名插槽 `headerCell` 渲染，插槽参数为：`{title, column}`。
 - 插槽 `headerCell` 优先级高于列属性 `title`。
 
 :::demo
 
 basic/header-title
+
+:::
+
+## 带总结栏的表格
+
+通过 `summary` 插槽方式设置总结栏， 使用 `s-table-summary-row` 设置一行，`s-table-summary-cell` 设置列。
+
+- 你可以通过在 `s-table-summary-cell` 上设置 `index|columnKey` 和 `colSpan`，来表示展示位置和合并列数。
+- 你可以通过插槽 `default` 获取组件内部自动计算的和，当然你也可以设置任意内容。
+- 使用表格属性 `summaryFixed` 设置总结栏固定，可选值为`true | false | 'top' | 'bottom'`。
+
+:::demo
+
+basic/summary
 
 :::
