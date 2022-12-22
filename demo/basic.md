@@ -160,3 +160,16 @@ basic/context-menu
 basic/auto-header-height
 
 :::
+
+## 带序号列的表格
+
+使用表格属性 `rowSerialNumber` 展示序号列，支持全量序号或分页内序号，默认是全量序号。
+
+- 当 `rowSerialNumber` 值为 `boolean` 时，使用默认配置。
+- 当 `rowSerialNumber` 值为 `object` 时，个性话配置序号列，支持 `{columnWidth: 48, columnTitle: '序号', fixed: false, currentPage: false }`。
+
+:::demo
+
+basic/serial-number
+
+:::
