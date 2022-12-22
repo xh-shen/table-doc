@@ -147,3 +147,16 @@ basic/summary
 basic/context-menu
 
 :::
+
+## 自动表头高度的表格
+
+开启自动表头高度时，表头部分会降级到全量渲染，根据实际场景使用。
+
+- 使用表格属性 `auto-header-height`即可开启自动表头高度。
+- 拖动第一列 `姓名` 列体验效果吧。
+
+:::demo
+
+basic/auto-header-height
+
+:::
