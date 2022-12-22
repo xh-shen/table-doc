@@ -128,12 +128,22 @@ basic/header-title
 
 通过 `summary` 插槽方式设置总结栏， 使用 `s-table-summary-row` 设置一行，`s-table-summary-cell` 设置列。
 
-- 你可以通过在 `s-table-summary-cell` 上设置 `index|columnKey` 和 `colSpan`，来表示展示位置和合并列数。
-- 你可以通过插槽 `default` 获取组件内部自动计算的和，当然你也可以设置任意内容。
+- 通过在 `s-table-summary-cell` 上设置 `index|columnKey` 和 `colSpan`，来表示展示位置和合并列数。
+- 通过在 `s-table-summary-cell` 插槽 `default` 获取组件内部自动计算的和，当然你也可以设置任意内容。
 - 使用表格属性 `summaryFixed` 设置总结栏固定，可选值为`true | false | 'top' | 'bottom'`。
 
 :::demo
 
 basic/summary
+
+:::
+
+## 带右键菜单的表格
+
+通过 `contextmenuPopup` 插槽方式设置右键菜单。
+
+:::demo
+
+basic/context-menu
 
 :::
