@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-05-09 12:53:21
  * @LastEditors: shen
- * @LastEditTime: 2022-12-05 11:10:37
+ * @LastEditTime: 2022-12-23 13:53:42
  * @Description:
  */
 import type { DefaultTheme } from 'vitepress'
@@ -58,7 +58,7 @@ const docSidebars = [
 
 const demoSidebars = [
 	{
-		text: '基础',
+		text: '',
 		items: [
 			{
 				text: '基本用法',
@@ -93,21 +93,8 @@ const demoSidebars = [
 				link: '/demo/request'
 			},
 			{
-				text: '工具栏',
-				link: '/demo/toolbar'
-			},
-			{
 				text: '可编辑表格',
 				link: '/demo/editable'
-			}
-		]
-	},
-	{
-		text: '进阶',
-		items: [
-			{
-				text: '自定义样式',
-				link: '/demo/style'
 			}
 		]
 	}
