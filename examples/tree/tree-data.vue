@@ -1,13 +1,10 @@
 <template>
-	<ElCheckbox v-model="expandRowByClick">允许点击行之后展开/收起</ElCheckbox>
-	<ElCheckbox v-model="hideExpandIcon">隐藏展开图标</ElCheckbox>
 	<s-table
 		:columns="columns"
 		:data-source="dataSource"
-		:scroll="{ x: 2000 }"
 		:pagination="false"
-		:row-expandable="rowExpandable"
-		:expand-row-by-click="expandRowByClick"
+		expand-row-by-click
+		:indentSize="16"
 		@expand="onExpand"
 		@expandedRowsChange="onExpandedRowsChange"
 	>
@@ -29,23 +26,11 @@
 				</ElSpace>
 			</template>
 		</template>
-		<template #expandedRowRender="{ record }">
-			<div class="more-detail">
-				<p class="title"><b>姓名:</b></p>
-				<p class="content">{{ record.name }}</p>
-				<br />
-				<p class="title"><b>年龄:</b></p>
-				<p class="content">{{ record.age }}</p>
-				<br />
-				<p class="title"><b>地址:</b></p>
-				<p class="content">{{ record.address }}</p>
-			</div>
-		</template>
 	</s-table>
 </template>
 <script setup lang="ts">
-import { ref, watch } from 'vue'
-import { ElTag, ElSpace, ElCheckbox } from 'element-plus'
+import { ref } from 'vue'
+import { ElTag, ElSpace } from 'element-plus'
 import type { STableColumnsType, STableProps } from '@shene/table'
 
 interface DataType {
@@ -55,6 +40,7 @@ interface DataType {
 	sex: string
 	address: string
 	tags: string[]
+	children?: DataType[]
 }
 
 const columns: STableColumnsType<DataType> = [
@@ -62,14 +48,16 @@ const columns: STableColumnsType<DataType> = [
 		title: '姓名',
 		dataIndex: 'name',
 		key: 'name',
-		width: 120,
-		fixed: true
+		width: 200,
+		fixed: true,
+		rowDrag: true
 	},
 	{
 		title: '年龄',
 		dataIndex: 'age',
 		key: 'age',
-		width: 100
+		width: 100,
+		rowDrag: true
 	},
 	{
 		title: '性别',
@@ -97,30 +85,49 @@ const columns: STableColumnsType<DataType> = [
 	}
 ]
 
-const data: DataType[] = []
-for (let i = 0; i < 5; i++) {
-	data.push({
+const TOTAL = 5
+
+function getObject(i: any) {
+	return {
 		key: i.toString(),
 		name: ['张三', '李四', '王五', '马六'][i % 4],
 		age: [18, 30, 26, 45][i % 4],
 		sex: ['男', '女'][i % 2],
 		address: ['北京', '上海', '天津', '重庆'][i % 4] + '市某某区某某大街520号',
 		tags: [['前端', '后端'], ['后端'], ['前端', '产品', '项目'], ['测试']][i % 4]
-	})
+	}
 }
 
-const dataSource = ref(data)
-
-const rowExpandable = (record: DataType) => {
-	return record.name !== '张三'
+function getData(): DataType[] {
+	const data = []
+	for (let i = 0; i < TOTAL; i++) {
+		const obj: any = getObject(i)
+		obj.children = new Array(2).fill(null).map((t, j) => {
+			const secondIndex = 100 * j + (i + 1) * 10
+			const secondObj = {
+				...obj,
+				name: `${obj.name} ${secondIndex}`,
+				key: secondIndex.toString()
+			}
+			secondObj.children = new Array(3).fill(null).map((m, n) => {
+				const thirdIndex = secondIndex * 1000 + 100 * m + (n + 1) * 10
+				return {
+					...obj,
+					name: `${obj.name} ${thirdIndex}`,
+					key: thirdIndex.toString()
+				}
+			})
+			return secondObj
+		})
+		// 第一行不设置子节点
+		if (i === 0) {
+			obj.children = undefined
+		}
+		data.push(obj)
+	}
+	return data
 }
-const hideExpandIcon = ref(false)
-const expandRowByClick = ref(true)
-const expandIconColumnIndex = ref(0)
-watch(hideExpandIcon, newValue => {
-	expandIconColumnIndex.value = newValue ? -1 : 0
-})
-
+const dataSource = ref(getData())
 const onExpand: STableProps<DataType>['onExpand'] = (expanded, record) => {
 	console.log('expanded', expanded)
 	console.log('record', record)
@@ -129,16 +136,3 @@ const onExpandedRowsChange: STableProps<DataType>['onExpandedRowsChange'] = keys
 	console.log('keys', keys)
 }
 </script>
-
-<style scope>
-.more-detail {
-	line-height: 22px;
-}
-.more-detail > p {
-	display: inline-block;
-	margin: 4px 0;
-}
-.more-detail > p.title {
-	width: 120px;
-}
-</style>
