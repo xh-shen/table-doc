@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-05-09 12:53:21
  * @LastEditors: shen
- * @LastEditTime: 2022-12-23 13:53:42
+ * @LastEditTime: 2022-12-29 13:35:40
  * @Description:
  */
 import type { DefaultTheme } from 'vitepress'
@@ -85,15 +85,11 @@ const demoSidebars = [
 				link: '/demo/tree'
 			},
 			{
-				text: '合并单元格',
+				text: '合并和分组',
 				link: '/demo/group'
 			},
 			{
-				text: '服务端获取',
-				link: '/demo/request'
-			},
-			{
-				text: '可编辑表格',
+				text: '可编辑',
 				link: '/demo/editable'
 			}
 		]
