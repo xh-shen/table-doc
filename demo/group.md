@@ -8,8 +8,8 @@
 
 - 使用列属性 `customRender` 返回的单元格属性 `colSpan`，设值为 `0` 时，设置的单元格不会渲染。
 - 使用列属性 `colSpan` 设置表头合并。如果是多行表头，请参考下方「表头分组」示例。
-  `
-  :::demo
+
+:::demo
 
 group/colspan
 
