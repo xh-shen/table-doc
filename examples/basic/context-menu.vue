@@ -96,19 +96,19 @@ const handleContextMenuDelete = (args: STableContextmenuPopupArg) => {
 }
 </script>
 
-<style lang="scss" scope>
+<style scope>
 .popup {
 	width: 120px;
-	.popup-item {
-		cursor: pointer;
-		padding: 8px 8px 8px 20px;
-		&:hover {
-			background-color: #fafafa;
-		}
-		&.disabled {
-			color: #00000040;
-			cursor: not-allowed;
-		}
-	}
+}
+.popup-item {
+	cursor: pointer;
+	padding: 8px 8px 8px 20px;
+}
+.popup-item:hover {
+	background-color: #fafafa;
+}
+.popup-item.disabled {
+	color: #00000040;
+	cursor: not-allowed;
 }
 </style>
