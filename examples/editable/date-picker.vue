@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import { ElInput } from 'element-plus'
-
+import { ElDatePicker } from 'element-plus'
 import type { PropType } from 'vue'
 
 const props = defineProps({
@@ -10,7 +9,6 @@ const props = defineProps({
 	status: String as PropType<'error' | 'warning' | 'success'>,
 	onChange: Function as PropType<(value: string) => void>
 })
-
 const emit = defineEmits(['change'])
 const innerValue = ref(props.value)
 
@@ -29,11 +27,13 @@ watch(
 </script>
 
 <template>
-	<el-input
+	<ElDatePicker
 		v-bind="$attrs"
 		v-model="innerValue"
-		:placeholder="placeholder || '请输入'"
 		:class="{ [`is-edit-${status}`]: !!status }"
+		format="YYYY-MM-DD"
+		value-format="YYYY-MM-DD"
+		:placeholder="placeholder || '请选择'"
 		@change="onChange"
 	/>
 </template>
