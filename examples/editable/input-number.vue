@@ -46,7 +46,7 @@ watch(innerValue, newValue => {
 
 <style>
 .is-edit-error .el-input__wrapper {
-	box-shadow: 0 0 0 1px var(--el-color-danger) inset;
+	box-shadow: 0 0 0 1px var(--el-color-danger) inset !important;
 }
 .edit-input-number .el-input__inner {
 	text-align: left;

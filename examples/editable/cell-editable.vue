@@ -64,7 +64,15 @@ const columns: STableColumnsType<DataType> = [
 				{ max: 10, message: '字符数量不能超过 10', type: 'error' }
 			],
 			// 默认是否为编辑状态
-			defaultEditable: true
+			defaultEditable: true,
+			onChange: (value, { updateEditedRow }) => {
+				console.log(value)
+				if (!value) {
+					updateEditedRow({
+						sex: ''
+					})
+				}
+			}
 		}
 	},
 	{

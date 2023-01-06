@@ -42,6 +42,6 @@ watch(
 <style>
 .is-edit-error .el-input__wrapper,
 .is-edit-error:hover:not(.el-select--disabled) .el-input__wrapper {
-	box-shadow: 0 0 0 1px var(--el-color-danger) inset;
+	box-shadow: 0 0 0 1px var(--el-color-danger) inset !important;
 }
 </style>

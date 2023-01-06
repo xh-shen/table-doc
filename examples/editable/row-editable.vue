@@ -1,15 +1,21 @@
 <template>
+	<div style="margin-bottom: 10px; display: flex; justify-content: space-between">
+		<el-radio-group v-model="editableType">
+			<el-radio-button label="single">单行编辑</el-radio-button>
+			<el-radio-button label="multiple">多行编辑</el-radio-button>
+		</el-radio-group>
+		<el-button @click="onAddEditRecord">添加</el-button>
+	</div>
+
 	<s-table
 		ref="tableRef"
 		:columns="columns"
 		:data-source="dataSource"
 		:pagination="false"
-		:editable-row-keys="editableRowKeys"
-		@row-edit="onRowEdit"
-		@row-validate="onRowValidate"
-		@validate="onValidate"
+		:editable-type="editableType"
+		v-model:editable-row-keys="editableRowKeys"
 	>
-		<template #bodyCell="{ text, column, record }">
+		<template #bodyCell="{ text, column, record, editable }">
 			<template v-if="column.key === 'name'">
 				<a>{{ text }}</a>
 			</template>
@@ -22,7 +28,7 @@
 			</template>
 			<template v-else-if="column.key === 'action'">
 				<ElSpace size="large">
-					<template v-if="!editableRowKeys.includes(record.key)">
+					<template v-if="!editable">
 						<ElLink :underline="false" @click="onEdit(record.key)">编辑</ElLink>
 					</template>
 					<template v-else>
@@ -36,12 +42,13 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
-import { ElTag, ElSpace, ElLink } from 'element-plus'
+import { ElTag, ElSpace, ElLink, ElMessage } from 'element-plus'
 import Input from './input.vue'
+import InputNumber from './input-number.vue'
 import Select from './select.vue'
 import DatePicker from './date-picker.vue'
 
-import type { STableColumnsType, STableProps, STableInstanceExpose } from '@shene/table'
+import type { STableColumnsType, STableInstanceExpose } from '@shene/table'
 
 interface DataType {
 	key: string
@@ -67,24 +74,38 @@ const columns: STableColumnsType<DataType> = [
 			props: {
 				clearable: true
 			},
-			// 编辑完成，退出编辑态后触发
-			onEdited: context => {
-				console.log(context)
-			},
 			// 校验规则，此处同 Form 表单
 			rules: [
 				{ required: true, message: '不能为空' },
 				{ max: 10, message: '字符数量不能超过 10', type: 'error' }
 			],
-			// 默认是否为编辑状态
-			defaultEditable: true
+			onChange: (value, { updateEditedRow }) => {
+				if (!value) {
+					updateEditedRow({
+						sex: ''
+					})
+				} else {
+					updateEditedRow({
+						sex: '男'
+					})
+				}
+			}
 		}
 	},
 	{
 		title: '年龄',
 		dataIndex: 'age',
 		key: 'age',
-		width: 100
+		width: 120,
+		edit: {
+			component: InputNumber,
+			props: ({ editedRow }) => {
+				return {
+					disabled: !editedRow.name
+				}
+			},
+			rules: [{ required: true, message: '不能为空' }]
+		}
 	},
 	{
 		title: '性别',
@@ -100,9 +121,6 @@ const columns: STableColumnsType<DataType> = [
 					{ text: '女', value: '女' }
 				]
 			},
-			onEdited: context => {
-				console.log(context)
-			},
 			rules: [{ required: true, message: '不能为空' }]
 		}
 	},
@@ -115,9 +133,6 @@ const columns: STableColumnsType<DataType> = [
 			component: DatePicker,
 			props: {
 				clearable: true
-			},
-			onEdited: context => {
-				console.log(context)
 			},
 			rules: [{ required: true, message: '不能为空' }]
 		}
@@ -141,9 +156,6 @@ const columns: STableColumnsType<DataType> = [
 					{ text: '测试', value: '测试' }
 				]
 			},
-			onEdited: context => {
-				console.log(context)
-			},
 			rules: [{ required: true, message: '不能为空' }]
 		}
 	},
@@ -151,7 +163,14 @@ const columns: STableColumnsType<DataType> = [
 		title: '地址',
 		dataIndex: 'address',
 		key: 'address',
-		ellipsis: true
+		ellipsis: true,
+		minWidth: 200,
+		edit: {
+			component: Input,
+			props: {
+				clearable: true
+			}
+		}
 	},
 	{
 		title: '操作',
@@ -176,68 +195,36 @@ for (let i = 0; i < 5; i++) {
 
 const dataSource = ref(data)
 
-const tableRef = ref<STableInstanceExpose<DataType>>()
-const editableRowKeys = ref(['0'])
+const tableRef = ref<STableInstanceExpose<DataType, string>>()
+const editableType = ref('single')
+const editableRowKeys = ref<any>(['0'])
 
-const onEdit = (key: DataType['key']) => {
-	if (!editableRowKeys.value.includes(key)) {
-		console.log(567567)
-		editableRowKeys.value.push(key)
-		console.log(editableRowKeys.value)
+const onAddEditRecord = () => {
+	if (editableType.value === 'single' && editableRowKeys.value.length > 0) {
+		ElMessage.error('只能同时编辑一行')
 	}
+	tableRef.value?.addEditRecord({ key: (Math.random() * 1000000).toFixed(0).toString() }, { position: 'top' })
 }
 
-// 更新 editableRowKeys
-const updateEditState = (id: string) => {
-	const index = editableRowKeys.value.findIndex(t => t === id)
-	editableRowKeys.value.splice(index, 1)
+const onEdit = (key: DataType['key']) => {
+	if (editableType.value === 'single' && editableRowKeys.value.length > 0) {
+		ElMessage.error('只能同时编辑一行')
+	}
+	tableRef.value?.startEditable(key)
 }
 
 const onCancel = (key: string) => {
-	updateEditState(key)
-	tableRef.value?.clearValidateData()
+	tableRef.value?.cancelEditable(key)
 }
 
-const onSave = (key: string) => {
-	// 触发内部校验，而后也可在 onRowValidate 中接收异步校验结果
-	tableRef.value?.validateRowData(key).then(params => {
-		console.log('Event Table Promise Validate:', params)
-		if (params.result.length) {
-			const r = params.result[0]
-			return
-		}
-		// // 如果是 table 的父组件主动触发校验
-		// if (params.trigger === 'parent' && !params.result.length) {
-		// 	const current = editMap[currentSaveId.value]
-		// 	if (current) {
-		// 		data.value.splice(current.rowIndex, 1, current.editedRow)
-		// 		MessagePlugin.success('保存成功')
-		// 	}
-		// 	updateEditState(currentSaveId.value)
-		// }
-	})
-}
-
-// 行校验反馈事件，tableRef.value.validateRowData 执行结束后触发
-const onRowValidate: STableProps<DataType>['onRowValidate'] = params => {
-	console.log('Event Table Row Validate:', params)
-}
-const onValidate: STableProps<DataType>['onValidate'] = params => {
-	console.log('Event Table Data Validate:', params)
-}
-
-const onRowEdit: STableProps<DataType>['onRowEdit'] = params => {
-	const { row, rowIndex, col, value } = params
-	// const oldRowData = editMap[row.key]?.editedRow || row
-	// const editedRow = { ...oldRowData, [col.colKey]: value }
-	// editMap[row.key] = {
-	// 	...params,
-	// 	editedRow
-	// }
-
-	// ⚠️ 重要：以下内容应用于全量数据校验（单独的行校验不需要）
-	// const newData = [...data.value];
-	// newData[rowIndex] = editedRow;
-	// data.value = newData;
+const onSave = async (key: string) => {
+	try {
+		const record = await tableRef.value?.saveEditRecord(key)
+		console.log(record)
+		ElMessage.success('保存成功')
+	} catch (error: any) {
+		const r = error.result[0]
+		ElMessage.error(`${r.col.title} ${r.errorList[0].message}`)
+	}
 }
 </script>
