@@ -63,6 +63,7 @@ const localeValues: STableLocale = {
 	selectInvert: '反選當頁',
 	selectNone: '清空所有',
 	selectionAll: '全選所有',
+	serialNumberTitle: '序號',
 	sortTitle: '排序',
 	expand: '展開行',
 	collapse: '關閉行',
