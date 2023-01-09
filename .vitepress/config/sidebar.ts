@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-05-09 12:53:21
  * @LastEditors: shen
- * @LastEditTime: 2022-12-29 13:35:40
+ * @LastEditTime: 2023-01-09 08:56:49
  * @Description:
  */
 import type { DefaultTheme } from 'vitepress'
@@ -91,6 +91,10 @@ const demoSidebars = [
 			{
 				text: '可编辑',
 				link: '/demo/editable'
+			},
+			{
+				text: '全局配置',
+				link: '/demo/config'
 			}
 		]
 	}
