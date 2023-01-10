@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-12-02 16:55:05
  * @LastEditors: shen
- * @LastEditTime: 2022-12-14 20:50:14
+ * @LastEditTime: 2023-01-10 16:18:09
  * @Description: 
 -->
 <script setup lang="ts">
@@ -13,7 +13,7 @@ import nprogress from 'nprogress'
 import VPPage from './VPPage.vue'
 import VPHome from './VPHome.vue'
 import VPDoc from './VPDoc.vue'
-import { inject, onUpdated, onMounted } from 'vue'
+import { inject, onUpdated, onMounted, nextTick } from 'vue'
 
 const route = useRoute()
 const { frontmatter } = useData()
@@ -24,11 +24,22 @@ const NotFound = inject('NotFound')
 onMounted(() => {
 	if (!isClient) return
 	nprogress.done()
+	if (location.hash) {
+		nextTick(() => {
+			const id = '#' + location.hash.split('#')[1]
+			const el = document.querySelector<HTMLAnchorElement>(decodeURIComponent(id))
+			console.log(el?.offsetTop)
+			window.scrollTo({
+				top: el?.offsetTop
+			})
+		})
+	}
 })
 
 onUpdated(() => {
 	if (!isClient) return
 	nprogress.done()
+	console.log(456456456)
 })
 </script>
 
