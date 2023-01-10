@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-05-09 12:53:21
  * @LastEditors: shen
- * @LastEditTime: 2023-01-09 08:56:49
+ * @LastEditTime: 2023-01-10 09:02:41
  * @Description:
  */
 import type { DefaultTheme } from 'vitepress'
@@ -47,6 +47,10 @@ const docSidebars = [
 			{
 				text: 'API',
 				link: '/doc/api'
+			},
+			{
+				text: 'TYPE',
+				link: '/doc/type'
 			},
 			{
 				text: '常见问题',
