@@ -188,7 +188,8 @@
 	white-space: nowrap;
 }
 
-.vp-doc._doc_api > div > table td:nth-child(1) {
+.vp-doc._doc_api > div > table td:nth-child(1),
+.vp-doc._doc_api > div > table td:nth-child(1) > a {
 	font-weight: 700;
 }
 
