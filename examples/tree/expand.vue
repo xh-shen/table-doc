@@ -7,6 +7,7 @@
 		:scroll="{ x: 2000 }"
 		:pagination="false"
 		:row-expandable="rowExpandable"
+		:expand-icon-column-index="expandIconColumnIndex"
 		:expand-row-by-click="expandRowByClick"
 		@expand="onExpand"
 		@expandedRowsChange="onExpandedRowsChange"
