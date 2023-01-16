@@ -147,6 +147,8 @@ export function useActiveAnchor(container: Ref<HTMLElement>, marker: Ref<HTMLEle
 			const [isActive, hash] = isAnchorActive(i, anchor, nextAnchor)
 
 			if (isActive) {
+				// set url hash
+				history.replaceState(null, document.title, hash || ' ')
 				activateLink(hash)
 				return
 			}
