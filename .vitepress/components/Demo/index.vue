@@ -2,7 +2,7 @@
  * @Author: shen
  * @Date: 2022-06-20 09:32:09
  * @LastEditors: shen
- * @LastEditTime: 2023-01-16 09:54:59
+ * @LastEditTime: 2023-01-16 10:03:20
  * @Description: 
 -->
 <script lang="ts">
@@ -111,8 +111,7 @@ const handlePlayground = () => {
 </script>
 
 <template>
-	<!-- <ClientOnly> -->
-	<div>
+	<ClientOnly>
 		<p text="sm" v-html="decodedDescription" />
 		<div class="example">
 			<VExample :file="path" :demo="formatPathDemos[path]" />
@@ -231,8 +230,7 @@ const handlePlayground = () => {
 				</div>
 			</Transition>
 		</div>
-	</div>
-	<!-- </ClientOnly> -->
+	</ClientOnly>
 </template>
 
 <style scoped lang="scss">
